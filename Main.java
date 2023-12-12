@@ -5,6 +5,7 @@ public class Main {
     private static listaccount lsacc = new listaccount();
     private static DanhSachSanPham lssanpham = new DanhSachSanPham();
     private static dsNhaCungCap lsnhacc = new dsNhaCungCap();
+    private static dskhachhang lskh = new dskhachhang();
 
     private static account defaultMenu(Scanner sc, listaccount ls) {
         System.out.println("Vui long dang nhap");
