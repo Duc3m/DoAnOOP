@@ -1,0 +1,3 @@
+id   | Ten            | Ngay sinh | SDT        | Gioi tinh | Luong co ban   | He so luong    | Chuc vu   | Ngay bat dau        
+nv1  | dead 1         | 20/10/2004| 0902522842 | F         | 9000000        | 1.0            | nhan vien | 12/12/2023          
+nv2  | dead 2         | 12/4/1997 | 0123122842 | M         | 9000000        | 1.0            | nhan vien | 12/12/2023          

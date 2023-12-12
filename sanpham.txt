@@ -1,0 +1,5 @@
+id        | ten                           | loai      | gia       | so luong       | nhacungcapId   
+dt1       | Iphone 15 pro max             | dienthoai | 34990000  | 1000           | ncc1           
+dt2       | Samsumg Galaxy S23 ultra      | dienthoai | 31990000  | 1000           | ncc2           
+pk1       | AirPods Pro 2 2023 USB-C      | phukien   | 6190000   | 1000           | ncc1           
+pk2       | Cu sac Samsung Type-C 45W     | phukien   | 1190000   | 1000           | ncc2           

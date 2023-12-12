@@ -1,5 +1,9 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DanhSachNV {
     private nhanvien[] dsnv;
@@ -211,7 +215,7 @@ public class DanhSachNV {
                     String.format("%-5s| %-15s| %-10s| %-11s| %-10s| %-15s| %-15s| %-10s| %-20s\n", "id",
                             "Ten",
                             "Ngay sinh", "SDT", "Gioi tinh", "Luong co ban", "He so luong", "Chuc vu",
-                            "Ngay bat dau lam viec"));
+                            "Ngay bat dau"));
             for (nhanvien i : dsnv) {
                 file.write(i.toString());
             }
@@ -221,6 +225,49 @@ public class DanhSachNV {
         }
     }
 
+    private int readSL() {
+        int sl = 0;
+        Pattern header = Pattern.compile(
+                "^id\\s{3}\\| Ten\\s{12}\\| Ngay sinh \\| SDT\\s{8}\\| Gioi tinh \\| Luong co ban   \\| He so luong    \\| Chuc vu   \\| Ngay bat dau\\s{8}$");
+        Pattern body = Pattern.compile(
+                "^nv\\d{1,3}\\s{0,2}\\| [a-zA-z ]{1,16}\\s{0,16}\\| \\d{1,2}\\/\\d{1,2}\\/\\d{4}\\s{0,2}\\| 0\\d{9} \\| (F|M)\\s{9}\\| \\d{4,10}\\s{5,11}\\| \\d+.?\\d+\\s{0,12}\\| (nhan vien |quan ly   )\\| \\d{1,2}\\/\\d{1,2}\\/\\d{4}\\s{0,12}$");
+        Matcher findmatch;
+        try {
+            BufferedReader fs = new BufferedReader(new FileReader("nhanvien.txt"));
+            String currLine = fs.readLine();
+            findmatch = header.matcher(currLine);
+            if (!findmatch.find()) {
+                fs.close();
+                return -1;
+            }
+            while (currLine != null) {
+                currLine = fs.readLine();
+                if (currLine == null)
+                    break;
+                findmatch = body.matcher(currLine);
+                if (!findmatch.find()) {
+                    fs.close();
+                    return -1;
+                }
+                sl++;
+            }
+            fs.close();
+        } catch (Exception e) {
+            sl = -1;
+        }
+        return sl;
+    }
+
+    public void readFile() {
+        soluong = readSL();
+        if (soluong == -1) {
+            System.out.println("khong tim thay file nhanvien hoac file bi loi, khoi tao mang co san");
+            dsnv = new nhanvien[2];
+            dsnv[1] = new quanly(123123123321L, "quan ly vd",
+                    "0902522842", 'F', 20, 10, 2004, 9000000, 1.0, "quan ly", "a1", 2.0);
+
+        }
+    }
     // public void input() {
     // Scanner sc = new Scanner(System.in);
     // System.out.println("nhap so nhan vien can them: ");
@@ -324,17 +371,18 @@ public class DanhSachNV {
         } while (!option.equals("x"));
     }
 
-    public static void main(String[] args) {
-        DanhSachNV list = new DanhSachNV();
-        Scanner sc = new Scanner(System.in);
-        nhanvien nv1 = new nvbanhang(1231231233, "dead 1",
-                "0902522842", 'F', 20, 10, 2004, 9000000, 1.0, "nhan vien", "", 2.0);
-        nhanvien nv2 = new nvbanhang(1123812233, "dead 2", "0123122842", 'M', 12, 04, 1997, 9000000, 1.0, "nhan vien",
-                "", 2.0);
-        list.addNV(nv1);
-        list.addNV(nv2);
-        // list.input();
-        // list.writeToFile();
-        list.mainMenu(sc);
-    }
+    // public static void main(String[] args) {
+    // DanhSachNV list = new DanhSachNV();
+    // Scanner sc = new Scanner(System.in);
+    // nhanvien nv1 = new nvbanhang(1231231233, "dead 1",
+    // "0902522842", 'F', 20, 10, 2004, 9000000, 1.0, "nhan vien", "", 2.0);
+    // nhanvien nv2 = new nvbanhang(1123812233, "dead 2", "0123122842", 'M', 12, 04,
+    // 1997, 9000000, 1.0, "nhan vien",
+    // "", 2.0);
+    // list.addNV(nv1);
+    // list.addNV(nv2);
+    // // list.input();
+    // list.writeToFile();
+    // list.mainMenu(sc);
+    // }
 }

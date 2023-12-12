@@ -4,6 +4,7 @@ public class Main {
     private static account curruser = null;
     private static listaccount lsacc = new listaccount();
     private static DanhSachSanPham lssanpham = new DanhSachSanPham();
+    private static dsphieuxuat lsphieuxuat = new dsphieuxuat();
 
     private static account defaultMenu(Scanner sc, listaccount ls) {
         System.out.println("Vui long dang nhap");
@@ -40,7 +41,7 @@ public class Main {
                     System.out.println("menu nhan vien");
                     break;
                 case "3":
-                    lssanpham.mainMenu(sc, curruser);
+                    lssanpham.mainMenu(sc, curruser, lsphieuxuat);
                     break;
                 case "4":
                     System.out.println("menu khach hang");
@@ -64,6 +65,7 @@ public class Main {
         boolean isrunning = true;
         lsacc.readFile();
         lssanpham.readFile();
+        lsphieuxuat.readFile();
         while (isrunning) {
             if (curruser == null) {
                 String choice;

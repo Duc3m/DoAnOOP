@@ -5,7 +5,7 @@ public class Phieuxuat {
     private static int countId;
     private String id;
     private String idkhachhang;
-    private String chitietsanpham;
+    private String chitietsanpham; // tham chiếu tới chi tiết phiếu xuất
     private Date ngayban;
     private String idnguoiban;
 
