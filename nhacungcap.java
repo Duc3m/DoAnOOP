@@ -3,24 +3,25 @@ public class nhacungcap {
     private String id;
     private String tennhacungcap;
     private String diachi;
+    private int sodt;
 
-    public nhacungcap() {
+    public nhacungcap(String tennhacungcap, String diachi,int sodt) {
         countId++;
         id = "ncc" + countId;
-    }
-
-    public nhacungcap(String id, String tennhacungcap, String diachi) {
-        this.id = id;
         this.tennhacungcap = tennhacungcap;
         this.diachi = diachi;
+        this.sodt=sodt;
+    }
+
+    public nhacungcap(String id, String tennhacungcap, String diachi,int sodt) {
+        this.tennhacungcap = tennhacungcap;
+        this.diachi = diachi;
+        this.id = id;
+        this.sodt=sodt;
     }
 
     public String getId() {
         return this.id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getTennhacungcap() {
@@ -37,6 +38,18 @@ public class nhacungcap {
 
     public void setDiachi(String diachi) {
         this.diachi = diachi;
+    }
+
+    public int getSodt() {
+        return this.sodt;
+    }
+
+    public void setSodt(int sodt) {
+        this.sodt=sodt;
+    }
+
+    public String toString() {
+        return String.format("\n%-10s| %-30s| %-15s| %-15d\n", id, tennhacungcap, diachi,sodt);
     }
 
 }
