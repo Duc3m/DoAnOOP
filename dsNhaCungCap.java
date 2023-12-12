@@ -14,8 +14,12 @@ public class dsNhaCungCap {
         this.dsncc = ncc;
     }
 
+    public void Header() {
+
+    }
+
     public void XuatNCC() {
-        System.out.printf("\n%-10s| %-30s| %-15s| %-15s\n", "Id", "Ten", "Diachi", "Sodt");
+        Header();
         for (nhacungcap i : dsncc) {
             System.out.print(i);
         }
@@ -101,6 +105,7 @@ public class dsNhaCungCap {
     }
 
     public void suaNCC(Scanner sc) {
+        Header();
         System.out.println();
         System.out.print("Nhap id ban muon sua: ");
         String id = sc.nextLine();
@@ -110,8 +115,7 @@ public class dsNhaCungCap {
             System.out.println("Khong tim thay nha cung cap can sua.");
             return;
         }
-
-        System.out.printf("\n%-10s| %-30s| %-15s| %-15s\n", "Id", "Ten", "Diachi", "Sodt");
+        Header();
         System.out.println(dsncc[index]);
         char option;
         do {
@@ -130,6 +134,7 @@ public class dsNhaCungCap {
                     System.out.print("Nhap lai ten nha cung cap moi: ");
                     String newname = sc.nextLine();
                     dsncc[index].setTennhacungcap(newname);
+                    System.out.println(dsncc[index]);
                     System.out.println("Da sua thanh cong.");
                     break;
                 case '2':
@@ -137,6 +142,7 @@ public class dsNhaCungCap {
                     System.out.print("Nhap lai dia chi nha cung cap moi: ");
                     String newaddress = sc.nextLine();
                     dsncc[index].setDiachi(newaddress);
+                    System.out.println(dsncc[index]);
                     System.out.println("Da sua thanh cong.");
                     break;
                 case '3':
@@ -144,6 +150,7 @@ public class dsNhaCungCap {
                     System.out.print("Nhap lai so dien thoai nha cung cap moi: ");
                     int newnumber = Integer.parseInt(sc.nextLine());
                     dsncc[index].setSodt(newnumber);
+                    System.out.println(dsncc[index]);
                     System.out.println("Da sua thanh cong.");
                     break;
                 default:
