@@ -105,7 +105,7 @@ public class dsNhaCungCap {
     }
 
     public void suaNCC(Scanner sc) {
-        Header();
+        XuatNCC();
         System.out.println();
         System.out.print("Nhap id ban muon sua: ");
         String id = sc.nextLine();
