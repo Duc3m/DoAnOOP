@@ -4,6 +4,7 @@ public class Main {
     private static account curruser = null;
     private static listaccount lsacc = new listaccount();
     private static DanhSachSanPham lssanpham = new DanhSachSanPham();
+    private static dsNhaCungCap lsnhacc = new dsNhaCungCap();
 
     private static account defaultMenu(Scanner sc, listaccount ls) {
         System.out.println("Vui long dang nhap");
@@ -27,8 +28,9 @@ public class Main {
             System.out.println("1. Lam viec voi tai khoan");
             System.out.println("2. Lam viec voi nhan vien");
             System.out.println("3. Lam viec voi san pham");
-            System.out.println("4. Lam viec voi khach hang");
-            System.out.println("5. Tinh luong thang nay se nhan");
+            System.out.println("4. Lam viec voi nha cung cap");
+            System.out.println("5. Lam viec voi khach hang");
+            System.out.println("6. Tinh luong thang nay se nhan");
             System.out.println("x. De dang xuat");
             System.out.print("Thao tac ban muon thuc hien: ");
             choice = sc.nextLine();

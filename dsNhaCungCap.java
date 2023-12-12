@@ -15,7 +15,7 @@ public class dsNhaCungCap {
     }
 
     public void XuatNCC() {
-        System.out.printf("\n%-10s| %-30s| %-15s| %-15s\n", "id", "ten", "diachi", "sodt");
+        System.out.printf("\n%-10s| %-30s| %-15s| %-15s\n", "Id", "Ten", "Diachi", "Sodt");
         for (nhacungcap i : dsncc) {
             System.out.print(i);
         }
@@ -25,7 +25,7 @@ public class dsNhaCungCap {
         try {
             FileWriter file = new FileWriter("sanpham.txt");
             file.write(
-                    String.format("\n%-10s| %-30s| %-15s| %-15s\n", "id", "ten", "diachi", "sodt"));
+                    String.format("\n%-10s| %-30s| %-15s| %-15s\n", "Id", "Ten", "Diachi", "Sodt"));
             for (nhacungcap i : dsncc) {
                 file.write(i.toString());
             }
@@ -58,10 +58,10 @@ public class dsNhaCungCap {
     }
 
     public int xoaNCC(String id) {
-        int index=-1;
+        int index = -1;
         for (int i = 0; i < dsncc.length; i++) {
             if (dsncc[i].getId().equals(id)) {
-                index=i;
+                index = i;
                 for (int j = i; j < dsncc.length - 1; j++)
                     dsncc[j] = dsncc[j + 1];
             }
@@ -111,7 +111,7 @@ public class dsNhaCungCap {
             return;
         }
 
-        System.out.printf("\n%-10s| %-30s| %-15s| %-15s\n", "id", "ten", "diachi", "sodt");
+        System.out.printf("\n%-10s| %-30s| %-15s| %-15s\n", "Id", "Ten", "Diachi", "Sodt");
         System.out.println(dsncc[index]);
         char option;
         do {
@@ -161,7 +161,7 @@ public class dsNhaCungCap {
             System.out.println("2. Them nha cung cap moi");
             System.out.println("3. Xoa nha cung cap");
             System.out.println("4. Sua thong tin nha cung cap");
-            System.out.println("nhap x de tro lai");
+            System.out.println("Nhap x de tro lai");
             System.out.print("Chon thao tac ban muon lam: ");
             option = sc.nextLine().charAt(0);
             switch (option) {
