@@ -48,9 +48,9 @@ public class nvbanhang extends nhanvien {
 
     @Override
     public String toString() {
-        return String.format("%-5s| %-15s| %-10s| %-11s| %-10s| %-15s| %-15s| %-10s| %-20s\n", id,
+        return String.format("%-5s| %-13s| %-20s| %-11s| %-11s| %-10s| %-13s| %-9s| %-15s| %-10s| %-20s\n", id, cccd,
                 name,
-                getNewBirthday(), phonenumber, gender, luongcb, hesoluong, chucvu,
+                getNewBirthday(), phonenumber, gender, luongcb, hesoluong, sogiotangca, chucvu,
                 getNewStartedDate());
     }
 }
