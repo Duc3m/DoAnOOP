@@ -13,10 +13,19 @@ public class nvbanhang extends nhanvien {
     // this.sogiotangca = sogiotangca;
     // }
 
+    public nvbanhang(String id, long cccd, String name, String phonenumber, char gender, int ngay, int thang,
+            int nam, int luongcb, double hesoluong, String chucvu, String accid,
+            double sogiotangca) {
+        super(id, cccd, name, phonenumber, gender, ngay, thang, nam, 9000000, 1, chucvu, "");
+        setChucvu("nhan vien");
+        this.sogiotangca = sogiotangca;
+    }
+
     public nvbanhang(long cccd, String name, String phonenumber, char gender, int ngay, int thang,
             int nam, int luongcb, double hesoluong, String chucvu, String accid,
             double sogiotangca) {
         super(cccd, name, phonenumber, gender, ngay, thang, nam, 9000000, 1, chucvu, "");
+        setChucvu("nhan vien");
         this.sogiotangca = sogiotangca;
     }
 
