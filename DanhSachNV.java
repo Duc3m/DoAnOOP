@@ -28,6 +28,15 @@ public class DanhSachNV {
         return index;
     }
 
+    public void headerPrint() {
+        System.out.printf("\n%-5s| %-13s| %-20s| %-11s| %-11s| %-10s| %-13s| %-9s| %-15s| %-10s| %-20s\n",
+                "id",
+                "CCCD",
+                "Ten",
+                "Ngay sinh", "SDT", "Gioi tinh", "Luong co ban", "HSL/HSTN", "So gio tang ca", "Chuc vu",
+                "Ngay bat dau lam viec");
+    }
+
     public void deleteNewNV(Scanner sc) {
         if (dsnv.length <= 0) {
             System.out.println("khong ton tai nhan vien de xoa");
@@ -69,9 +78,7 @@ public class DanhSachNV {
             System.out.println("\nKhong tim thay nhan vien");
             return;
         }
-        System.out.printf("\n%-5s| %-15s| %-10s| %-11s| %-10s| %-15s| %-15s| %-10s| %-20s\n", "id", "Ten",
-                "Ngay sinh", "SDT", "Gioi tinh", "Luong co ban", "He so luong", "Chuc vu",
-                "Ngay bat dau lam viec");
+        headerPrint();
         System.out.println(dsnv[index]);
 
         String option;
@@ -96,10 +103,7 @@ public class DanhSachNV {
                     String newName = sc.nextLine();
                     dsnv[index].setName(newName);
                     System.out.println("Sua ten nhan vien thanh cong");
-                    System.out.printf("\n%-5s| %-15s| %-10s| %-11s| %-10s| %-15s| %-15s| %-10s| %-20s\n", "id",
-                            "Ten",
-                            "Ngay sinh", "SDT", "Gioi tinh", "Luong co ban", "He so luong", "Chuc vu",
-                            "Ngay bat dau lam viec");
+                    headerPrint();
                     System.out.println(dsnv[index]);
                     break;
                 case "2":
@@ -112,10 +116,7 @@ public class DanhSachNV {
                     int newYear = checkPattern.checkNam(sc);
                     dsnv[index].setBirthday(newYear, newMonth, newDay);
                     System.out.println("Sua ngay sinh nhan vien thanh cong!");
-                    System.out.printf("\n%-5s| %-15s| %-10s| %-11s| %-10s| %-15s| %-15s| %-10s| %-20s\n", "id",
-                            "Ten",
-                            "Ngay sinh", "SDT", "Gioi tinh", "Luong co ban", "He so luong", "Chuc vu",
-                            "Ngay bat dau lam viec");
+                    headerPrint();
                     System.out.println(dsnv[index]);
                     break;
                 // case "3":
@@ -138,10 +139,7 @@ public class DanhSachNV {
                     String newSDT = checkPattern.checkSdt(sc);
                     dsnv[index].setPhonenumber(newSDT);
                     System.out.println("Sua so dien thoai cua nhan vien thanh cong");
-                    System.out.printf("\n%-5s| %-15s| %-10s| %-11s| %-10s| %-15s| %-15s| %-10s| %-20s\n", "id",
-                            "Ten",
-                            "Ngay sinh", "SDT", "Gioi tinh", "Luong co ban", "He so luong", "Chuc vu",
-                            "Ngay bat dau lam viec");
+                    headerPrint();
                     System.out.println(dsnv[index]);
                     break;
                 case "4":
@@ -150,10 +148,7 @@ public class DanhSachNV {
                     char newGender = checkPattern.checkgt(sc);
                     dsnv[index].setGender(newGender);
                     System.out.println("Sua gioi tinh cua nhan vien thanh cong");
-                    System.out.printf("\n%-5s| %-15s| %-10s| %-11s| %-10s| %-15s| %-15s| %-10s| %-20s\n", "id",
-                            "Ten",
-                            "Ngay sinh", "SDT", "Gioi tinh", "Luong co ban", "He so luong", "Chuc vu",
-                            "Ngay bat dau lam viec");
+                    headerPrint();
                     System.out.println(dsnv[index]);
                     break;
                 case "5":
@@ -162,10 +157,7 @@ public class DanhSachNV {
                     int newLuongcb = checkPattern.checkInt(sc);
                     dsnv[index].setLuongcb(newLuongcb);
                     System.out.println("Sua luong co ban cua nhan vien thanh cong");
-                    System.out.printf("\n%-5s| %-15s| %-10s| %-11s| %-10s| %-15s| %-15s| %-10s| %-20s\n", "id",
-                            "Ten",
-                            "Ngay sinh", "SDT", "Gioi tinh", "Luong co ban", "He so luong", "Chuc vu",
-                            "Ngay bat dau lam viec");
+                    headerPrint();
                     System.out.println(dsnv[index]);
                     break;
                 case "6":
@@ -174,10 +166,7 @@ public class DanhSachNV {
                     double newHesoluong = checkPattern.checkDouble(sc);
                     dsnv[index].setHesoluong(newHesoluong);
                     System.out.println("Sua he so luong cua nhan vien thanh cong");
-                    System.out.printf("\n%-5s| %-15s| %-10s| %-11s| %-10s| %-15s| %-15s| %-10s| %-20s\n", "id",
-                            "Ten",
-                            "Ngay sinh", "SDT", "Gioi tinh", "Luong co ban", "He so luong", "Chuc vu",
-                            "Ngay bat dau lam viec");
+                    headerPrint();
                     System.out.println(dsnv[index]);
                     break;
                 // case "7":
@@ -200,9 +189,7 @@ public class DanhSachNV {
     }
 
     public void xuatNhanVien() {
-        System.out.printf("%-5s| %-15s| %-10s| %-11s| %-10s| %-15s| %-15s| %-10s| %-20s\n", "id", "Ten",
-                "Ngay sinh", "SDT", "Gioi tinh", "Luong co ban", "He so luong", "Chuc vu",
-                "Ngay bat dau lam viec");
+        headerPrint();
         for (nhanvien i : dsnv) {
             System.out.print(i);
         }
@@ -212,10 +199,11 @@ public class DanhSachNV {
         try {
             FileWriter file = new FileWriter("nhanvien.txt");
             file.write(
-                    String.format("%-5s| %-15s| %-10s| %-11s| %-10s| %-15s| %-15s| %-10s| %-20s\n", "id",
+                    String.format("%-5s| %-13s| %-20s| %-11s| %-11s| %-10s| %-13s| %-9s| %-15s| %-10s| %-20s\n", "id",
+                            "CCCD",
                             "Ten",
-                            "Ngay sinh", "SDT", "Gioi tinh", "Luong co ban", "He so luong", "Chuc vu",
-                            "Ngay bat dau"));
+                            "Ngay sinh", "SDT", "Gioi tinh", "Luong co ban", "HSL/HSTN", "So gio tang ca", "Chuc vu",
+                            "Ngay bat dau lam viec"));
             for (nhanvien i : dsnv) {
                 file.write(i.toString());
             }
@@ -325,10 +313,13 @@ public class DanhSachNV {
         System.out.print("Nhap gioi tinh cua nhan vien (M/F): ");
         char newGender = checkPattern.checkgt(sc);
 
+        System.out.print("Nhap so gio tang cua nhan vien: ");
+        double newSGTC = Double.parseDouble(sc.nextLine());
+
         nhanvien newNV = new nvbanhang(newCccd, newName, newSDT, newGender, newBirthDay, newBirthMonth,
                 newBirthYear,
                 9000000,
-                1.0, "nhan vien", "", 2.0);
+                1.0, "nhan vien", "", newSGTC);
         addNV(newNV);
         System.out.println("Them nhan vien moi thanh cong!");
     }

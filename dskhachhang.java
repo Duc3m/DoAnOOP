@@ -14,9 +14,13 @@ public class dskhachhang {
         this.dskh = kh;
     }
 
-    public void XuatKH() {
+    public void Header() {
         System.out.printf("%-5s| %-15s| %-15s| %-10s| %-11s| %-10s\n", "id", "cccd", "Ten",
                 "Ngay sinh", "SDT", "Gioi tinh");
+    }
+
+    public void XuatKH() {
+        Header();
         for (khachhang i : dskh) {
             System.out.print(i);
         }
@@ -132,8 +136,7 @@ public class dskhachhang {
             System.out.println("Khong tim thay id khach hang can sua.");
             return;
         }
-        System.out.printf("%-5s| %-15s| %-15s| %-10s| %-11s| %-10s\n", "id", "cccd", "Ten",
-                "Ngay sinh", "SDT", "Gioi tinh");
+        Header();
         System.out.println(dskh[index]);
 
         String option;
@@ -154,8 +157,7 @@ public class dskhachhang {
                     System.out.print("Nhap lai cccd khach hang: ");
                     long newCccd = checkPattern.checkcccd(sc);
                     dskh[index].setCccd(newCccd);
-                    System.out.printf("%-5s| %-15s| %-15s| %-10s| %-11s| %-10s\n", "id", "cccd", "Ten",
-                            "Ngay sinh", "SDT", "Gioi tinh");
+                    Header();
                     System.out.println(dskh[index]);
                     break;
                 case "2":
@@ -163,8 +165,7 @@ public class dskhachhang {
                     System.out.print("Nhap lai ten khach hang: ");
                     String newName = sc.nextLine();
                     dskh[index].setName(newName);
-                    System.out.printf("%-5s| %-15s| %-15s| %-10s| %-11s| %-10s\n", "id", "cccd", "Ten",
-                            "Ngay sinh", "SDT", "Gioi tinh");
+                    Header();
                     System.out.println(dskh[index]);
                     break;
                 case "3":
@@ -177,8 +178,7 @@ public class dskhachhang {
                     System.out.print("Nhap nam sinh: ");
                     int newYear = checkPattern.checkNam(sc);
                     dskh[index].setBirthday(newYear, newMonth, newDay);
-                    System.out.printf("%-5s| %-15s| %-15s| %-10s| %-11s| %-10s\n", "id", "cccd", "Ten",
-                            "Ngay sinh", "SDT", "Gioi tinh");
+                    Header();
                     System.out.println(dskh[index]);
                     break;
                 // case '4':
@@ -196,8 +196,7 @@ public class dskhachhang {
                     System.out.print("Nhap lai sdt khach hang: ");
                     String newPhone = checkPattern.checkSdt(sc);
                     dskh[index].setPhonenumber(newPhone);
-                    System.out.printf("%-5s| %-15s| %-15s| %-10s| %-11s| %-10s\n", "id", "cccd", "Ten",
-                            "Ngay sinh", "SDT", "Gioi tinh");
+                    Header();
                     System.out.println(dskh[index]);
                     break;
                 case "5":
@@ -205,8 +204,7 @@ public class dskhachhang {
                     System.out.print("Nhap lai gioi tinh khach hang M/F: ");
                     char newGender = checkPattern.checkgt(sc);
                     dskh[index].setGender(newGender);
-                    System.out.printf("%-5s| %-15s| %-15s| %-10s| %-11s| %-10s\n", "id", "cccd", "Ten",
-                            "Ngay sinh", "SDT", "Gioi tinh");
+                    Header();
                     System.out.println(dskh[index]);
                     break;
                 default:
@@ -246,9 +244,9 @@ public class dskhachhang {
         } while (!option.equals("x"));
     }
 
-    // public static void main(String[] args) {
-    // dskhachhang ds = new dskhachhang();
-    // Scanner sc = new Scanner(System.in);
-    // ds.mainMenu(sc);
-    // }
+    public static void main(String[] args) {
+    dskhachhang ds = new dskhachhang();
+    Scanner sc = new Scanner(System.in);
+    ds.mainMenu(sc);
+    }
 }
