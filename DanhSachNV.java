@@ -40,7 +40,7 @@ public class DanhSachNV {
                 "Ngay BDLV");
     }
 
-    public void deleteNewNV(Scanner sc) {
+    public void deleteNV(Scanner sc) {
         if (dsnv.length <= 0) {
             System.out.println("khong ton tai nhan vien de xoa");
             return;
@@ -52,7 +52,7 @@ public class DanhSachNV {
             System.out.println("\nKhong tim thay nhan vien can xoa!");
             return;
         }
-        System.out.println("Ban co chan chac muon xoa nhan vien nay? (y/n)");
+        System.out.print("Ban co chan chac muon xoa nhan vien nay? (y/n): ");
         String confirm = sc.nextLine();
         if (confirm.equals("yes") || confirm.equals("Yes") || confirm.equals("Y") || confirm.equals("y")) {
             for (; index < dsnv.length; index++) {
@@ -216,39 +216,40 @@ public class DanhSachNV {
         }
     }
 
-    public void input() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("nhap so nhan vien can them: ");
-        soluong = Integer.parseInt(sc.nextLine());
-        dsnv = new nhanvien[soluong];
-        for (int i = 0; i < soluong; i++) {
-            System.out.println("====================");
-            System.out.println("Nhan vien thu " + (i + 1));
-            System.out.print("Nhap ten nhan vien: ");
-            String newName = sc.nextLine();
+    // public void input() {
+    // Scanner sc = new Scanner(System.in);
+    // System.out.println("nhap so nhan vien can them: ");
+    // soluong = Integer.parseInt(sc.nextLine());
+    // dsnv = new nhanvien[soluong];
+    // for (int i = 0; i < soluong; i++) {
+    // System.out.println("====================");
+    // System.out.println("Nhan vien thu " + (i + 1));
+    // System.out.print("Nhap ten nhan vien: ");
+    // String newName = sc.nextLine();
 
-            System.out.print("Nhap so CCCD/CMND cua nhan vien: ");
-            long newCccd = sc.nextLong();
-            sc.nextLine();
+    // System.out.print("Nhap so CCCD/CMND cua nhan vien: ");
+    // long newCccd = sc.nextLong();
+    // sc.nextLine();
 
-            System.out.print("Nhap ngay sinh cua nhan vien: ");
-            int newDay = Integer.parseInt(sc.nextLine());
-            int newMonth = Integer.parseInt(sc.nextLine());
-            int newYear = Integer.parseInt(sc.nextLine());
+    // System.out.print("Nhap ngay sinh cua nhan vien: ");
+    // int newDay = Integer.parseInt(sc.nextLine());
+    // int newMonth = Integer.parseInt(sc.nextLine());
+    // int newYear = Integer.parseInt(sc.nextLine());
 
-            System.out.print("Nhap so dien thoai cua nhan vien: ");
-            String newSDT = sc.nextLine();
+    // System.out.print("Nhap so dien thoai cua nhan vien: ");
+    // String newSDT = sc.nextLine();
 
-            System.out.print("Nhap gioi tinh cua nhan vien (M/F): ");
-            char newGender = sc.nextLine().charAt(0);
+    // System.out.print("Nhap gioi tinh cua nhan vien (M/F): ");
+    // char newGender = sc.nextLine().charAt(0);
 
-            dsnv[i] = new nvbanhang(newCccd, newName, newSDT, newGender, newDay, newMonth,
-                    newYear,
-                    9000000,
-                    1.0, "nhan vien", "", 2.0);
-        }
-        sc.close();
-    }
+    // dsnv[i] = new nvbanhang(newCccd, newName, newSDT, newGender, newDay,
+    // newMonth,
+    // newYear,
+    // 9000000,
+    // 1.0, "nhan vien", "", 2.0);
+    // }
+    // sc.close();
+    // }
 
     public void addNewNV(Scanner sc) {
 
@@ -271,7 +272,7 @@ public class DanhSachNV {
         System.out.print("Nhap gioi tinh cua nhan vien (M/F): ");
         char newGender = checkPattern.checkgt(sc);
 
-        System.out.print("Nhap so gio tang cua nhan vien: ");
+        System.out.print("Nhap so gio tang ca (he so trach nhiem) cua nhan vien (quan ly): ");
         double newSGTC = Double.parseDouble(sc.nextLine());
 
         nhanvien newNV = new nvbanhang(newCccd, newName, newSDT, newGender, newBirthDay, newBirthMonth,
@@ -282,12 +283,12 @@ public class DanhSachNV {
         System.out.println("Them nhan vien moi thanh cong!");
     }
 
-    public int readSl() {
+    private int readSl() {
         int sl = 0;
         Pattern header = Pattern.compile(
-                "id\\s{3}\\| CCCD\\s{9}\\| Ten\\s{17}\\| Ngay sinh\\s{2}\\| SDT\\s{8}\\| Luong co ban\\s{1}\\| He so luong\\s{1}\\| SGTC/HSTN\\s{1}\\| Chuc vu\\s{3}\\| Ngay BDLV\\s{1}$");
+                "id\\s{3}\\| CCCD\\s{9}\\| Ten\\s{17}\\| Ngay sinh\\s{2}\\| SDT\\s{8}\\| Gioi tinh \\| Luong co ban\\s{1}\\| He so luong\\s{1}\\| SGTC\\/HSTN\\s{1}\\| Chuc vu\\s{3}\\| Ngay BDLV\\s{1}$");
         Pattern body = Pattern.compile(
-                "^nv\\d{1,3}\\s{0,2}\\| \\d{12} \\|[a-zA-Z ]{1,16}\\s{0,16}\\| \\d{1,2}\\/\\d{1,2}\\/\\d{4}\\s{0,2}\\| 0\\d{9} \\| (F|M|f|m)\\s{9}\\| \\d{4,10}\\s{5,11}\\| \\d+.?\\d+\\s{0,12}\\| \\d+.?\\d+\\s{0,9}\\| (nhan vien | quan ly   )\\| \\d{1,2}\\/\\d{1,2}\\/\\d{4}\\s{0,12}$");
+                "^nv\\d{1,3}\\s{0,2}\\| \\d{12} \\|[a-zA-Z ]{1,20}\\s{0,20}\\| \\d{1,2}\\/\\d{1,2}\\/\\d{4}\\s{0,3}\\| 0\\d{9} \\| (F|M|f|m)\\s{9}\\| \\d{4,10}\\s{5,11}\\| \\d+.?\\d+\\s{0,12}\\| \\d+.?\\d+\\s{0,9}\\| (nhan vien | quan ly   )\\| \\d{1,2}\\/\\d{1,2}\\/\\d{4}\\s{0,12}$");
         Matcher findmatch;
         try {
             BufferedReader fs = new BufferedReader(new FileReader("nhanvien.txt"));
@@ -322,18 +323,18 @@ public class DanhSachNV {
         if (soluong == -1) {
             System.out.println("Khong tim thay file hoac file bi loi! Bat dau khoi tao danh sach co san.");
             dsnv = new nhanvien[4];
-            dsnv[0] = new nvbanhang(231231232333L, "Tran Dai Van", "0902522842", 'F', 20, 10, 2004, 9000000, 1.0,
+            dsnv[0] = new nvbanhang(231231232333L, "Tran Dai Van", "0902522842", 'M', 20, 10, 2004, 9000000, 1.0,
                     "nhan vien", "",
-                    4.0);
-            dsnv[1] = new nvbanhang(123231233312L, "Nguyen Dai Nghia", "0902512332", 'F', 12, 4, 1999, 9000000, 1.0,
+                    4.0, 12, 7, 2021);
+            dsnv[1] = new nvbanhang(123231233312L, "Nguyen Dai Nghia", "0902512332", 'M', 12, 4, 1999, 9000000, 1.0,
                     "nhan vien", "",
-                    1.0);
-            dsnv[2] = new nvbanhang(121233123312L, "Truong Minh Thu", "0123312325", 'M', 5, 9, 1999, 9000000, 1.0,
+                    1.0, 3, 5, 2022);
+            dsnv[2] = new nvbanhang(121233123312L, "Truong Minh Thu", "0123312325", 'F', 5, 9, 1999, 9000000, 1.0,
                     "nhan vien", "",
-                    2.0);
-            dsnv[3] = new nvbanhang(231232323312L, "Tran Duc Em", "0123123225", 'F', 28, 2, 2000, 9000000, 1.0,
+                    2.0, 17, 1, 2021);
+            dsnv[3] = new nvbanhang(231232323312L, "Tran Duc Em", "0123123225", 'M', 28, 2, 2000, 9000000, 1.0,
                     "nhan vien", "",
-                    5.0);
+                    5.0, 2, 12, 2022);
             soluong = 4;
             writeToFile();
             return;
@@ -344,9 +345,9 @@ public class DanhSachNV {
             sc.nextLine();
             for (int i = 0; i < soluong; i++) {
                 String id = sc.next();
-                sc.next();
+                sc.next(); // bo qua |
                 String cccd = sc.next();
-                sc.next();
+                sc.next(); // bo qua |
                 String name = "";
                 while (sc.hasNext()) {
                     String currLine = sc.next();
@@ -357,22 +358,27 @@ public class DanhSachNV {
                 }
                 String ngaysinh[] = new String[3];
                 ngaysinh = sc.next().split("\\/");
-                sc.next();
+                sc.next(); // bo qua |
                 String sdt = sc.next();
-                sc.next();
+                sc.next(); // bo qua |
                 char gender = sc.next().charAt(0);
-                sc.next();
+                sc.next(); // bo qua |
+                sc.next(); // bo qua luong co ban
+                sc.next(); // bo qua |
                 String heSoLuong = sc.next();
-                sc.next();
+                sc.next(); // bo qua |
                 String sgtc_hstn = sc.next();
-                sc.next();
+                sc.next(); // bo qua |
+                sc.next(); // bo qua nhan
+                sc.next(); // bo qua vien
+                sc.next(); // bo qua |
                 String NgayBDLV[] = new String[3];
                 NgayBDLV = sc.next().split("\\/");
-                dsnv[i] = new nvbanhang(Long.parseLong(cccd), name, sdt, gender, Integer.parseInt(ngaysinh[0]),
+                dsnv[i] = new nvbanhang(id, Long.parseLong(cccd), name, sdt, gender, Integer.parseInt(ngaysinh[0]),
                         Integer.parseInt(ngaysinh[1]), Integer.parseInt(ngaysinh[2]), 9000000,
                         Double.parseDouble(heSoLuong), "nhan vien",
                         "", Double.parseDouble(sgtc_hstn), Integer.parseInt(NgayBDLV[0]), Integer.parseInt(NgayBDLV[1]),
-                        Integer.parseInt(NgayBDLV[3]));
+                        Integer.parseInt(NgayBDLV[2]));
             }
         } catch (Exception e) {
         }
@@ -382,7 +388,7 @@ public class DanhSachNV {
         String option;
         do {
             System.out.println();
-            System.out.println("========== Menu San Pham ==========");
+            System.out.println("========== Menu Nhan Vien ==========");
             System.out.println("1. Hien danh sach nhan vien hien tai");
             System.out.println("2. Them nhan vien moi");
             System.out.println("3. Xoa nhan vien");
@@ -405,7 +411,7 @@ public class DanhSachNV {
                     }
                     break;
                 case "3":
-                    deleteNewNV(sc);
+                    deleteNV(sc);
                     break;
                 case "4":
                     EditNV(sc);
@@ -421,7 +427,5 @@ public class DanhSachNV {
     // Scanner sc = new Scanner(System.in);
     // list.readFile();
     // list.mainMenu(sc);
-    // list.xuatNhanVien();
-    // list.writeToFile();
     // }
 }
