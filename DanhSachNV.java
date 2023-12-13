@@ -40,7 +40,7 @@ public class DanhSachNV {
                 "Ngay BDLV");
     }
 
-    public void deleteNewNV(Scanner sc) {
+    public void deleteNV(Scanner sc) {
         if (dsnv.length <= 0) {
             System.out.println("khong ton tai nhan vien de xoa");
             return;
@@ -52,7 +52,7 @@ public class DanhSachNV {
             System.out.println("\nKhong tim thay nhan vien can xoa!");
             return;
         }
-        System.out.println("Ban co chan chac muon xoa nhan vien nay? (y/n)");
+        System.out.print("Ban co chan chac muon xoa nhan vien nay? (y/n): ");
         String confirm = sc.nextLine();
         if (confirm.equals("yes") || confirm.equals("Yes") || confirm.equals("Y") || confirm.equals("y")) {
             for (; index < dsnv.length; index++) {
@@ -323,16 +323,16 @@ public class DanhSachNV {
         if (soluong == -1) {
             System.out.println("Khong tim thay file hoac file bi loi! Bat dau khoi tao danh sach co san.");
             dsnv = new nhanvien[4];
-            dsnv[0] = new nvbanhang(231231232333L, "Tran Dai Van", "0902522842", 'F', 20, 10, 2004, 9000000, 1.0,
+            dsnv[0] = new nvbanhang(231231232333L, "Tran Dai Van", "0902522842", 'M', 20, 10, 2004, 9000000, 1.0,
                     "nhan vien", "",
                     4.0, 12, 7, 2021);
-            dsnv[1] = new nvbanhang(123231233312L, "Nguyen Dai Nghia", "0902512332", 'F', 12, 4, 1999, 9000000, 1.0,
+            dsnv[1] = new nvbanhang(123231233312L, "Nguyen Dai Nghia", "0902512332", 'M', 12, 4, 1999, 9000000, 1.0,
                     "nhan vien", "",
                     1.0, 3, 5, 2022);
-            dsnv[2] = new nvbanhang(121233123312L, "Truong Minh Thu", "0123312325", 'M', 5, 9, 1999, 9000000, 1.0,
+            dsnv[2] = new nvbanhang(121233123312L, "Truong Minh Thu", "0123312325", 'F', 5, 9, 1999, 9000000, 1.0,
                     "nhan vien", "",
                     2.0, 17, 1, 2021);
-            dsnv[3] = new nvbanhang(231232323312L, "Tran Duc Em", "0123123225", 'F', 28, 2, 2000, 9000000, 1.0,
+            dsnv[3] = new nvbanhang(231232323312L, "Tran Duc Em", "0123123225", 'M', 28, 2, 2000, 9000000, 1.0,
                     "nhan vien", "",
                     5.0, 2, 12, 2022);
             soluong = 4;
@@ -388,7 +388,7 @@ public class DanhSachNV {
         String option;
         do {
             System.out.println();
-            System.out.println("========== Menu San Pham ==========");
+            System.out.println("========== Menu Nhan Vien ==========");
             System.out.println("1. Hien danh sach nhan vien hien tai");
             System.out.println("2. Them nhan vien moi");
             System.out.println("3. Xoa nhan vien");
@@ -411,7 +411,7 @@ public class DanhSachNV {
                     }
                     break;
                 case "3":
-                    deleteNewNV(sc);
+                    deleteNV(sc);
                     break;
                 case "4":
                     EditNV(sc);
