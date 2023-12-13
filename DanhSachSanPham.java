@@ -38,7 +38,7 @@ public class DanhSachSanPham {
     private int readSl() {
         int sl = 0;
         Pattern header = Pattern.compile(
-                "id\s{8}\\| ten\s{27}\\| loai\s{6}\\| gia\s{7}\\| so luong\s{7}\\| nhacungcapId\s{3}$");
+                "id\\s{8}\\| ten\\s{27}\\| loai\\s{6}\\| gia\\s{7}\\| so luong\\s{7}\\| nhacungcapId\\s{3}$");
 
         Pattern body = Pattern.compile(
                 "^(pk|dt)\\d{1,9}\\s{0,8}\\| [a-zA-z0-9-_ ]{0,30}\\| (phukien\\s{3}|dienthoai\\s{1})\\| \\d{4,10}\\s{0,6}\\| \\d{1,9}\\s{0,15}\\| ncc\\d{1,9}\\s{0,11}$");

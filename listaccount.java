@@ -14,7 +14,7 @@ public class listaccount {
     private int readSL() {
         int n = 0;
         Pattern header = Pattern
-                .compile("id\\s{8}\\| userName\\s{22}\\| password\s{22}\\| type\s{6}\\| ngaytao\\s{0,8}$",
+                .compile("id\\s{8}\\| userName\\s{22}\\| password\\s{22}\\| type\\s{6}\\| ngaytao\\s{0,8}$",
                         Pattern.CASE_INSENSITIVE);
         Pattern body = Pattern.compile(
                 "^a\\d{1,9}\\s{0,8}\\| [a-zA-Z0-9]{0,30}\\s{0,30}\\| [a-zA-Z0-9]{0,30}\\s{0,30}\\| (NV|QL)\\s{8}\\| \\d{1,2}\\/\\d{1,2}\\/\\d{4}\\s{0,7}$",

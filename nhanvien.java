@@ -68,6 +68,20 @@ public abstract class nhanvien extends mortals {
         account = accid;
     }
 
+    public nhanvien(long cccd, String name, String phonenumber, char gender, int ngaysinh,
+            int thangsinh, int namsinh, int luongcb, double hesoluong, String chucvu, String accid, int ngaylv,
+            int thanglv, int namlv) {
+        super(cccd, name, phonenumber, gender, ngaysinh, thangsinh, namsinh);
+        countId++;
+        id = "nv" + countId;
+        this.luongcb = 9000000;
+        this.hesoluong = hesoluong;
+        this.chucvu = chucvu;
+        birthday = new Date(namsinh, thangsinh - 1, ngaysinh);
+        startedDate = new Date(namlv, thanglv - 1, ngaylv);
+        account = accid;
+    }
+
     public String getId() {
         return this.id;
     }
