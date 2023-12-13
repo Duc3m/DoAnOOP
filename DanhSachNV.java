@@ -249,17 +249,6 @@ public class DanhSachNV {
         return sl;
     }
 
-    public void readFile() {
-        soluong = readSL();
-        if (soluong == -1) {
-            System.out.println("khong tim thay file nhanvien hoac file bi loi, khoi tao mang co san");
-            dsnv = new nhanvien[2];
-            dsnv[1] = new quanly(123123123321L, "quan ly vd",
-                    "0902522842", 'F', 20, 10, 2004, 9000000, 1.0, "quan ly", "a1", 2.0);
-
-        }
-    }
-
     public void input() {
         Scanner sc = new Scanner(System.in);
         System.out.println("nhap so nhan vien can them: ");
