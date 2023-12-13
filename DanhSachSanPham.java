@@ -27,12 +27,14 @@ public class DanhSachSanPham {
         this.sanphamList = tempSanphams;
     }
 
-    public void xuatSanPham() {
+    public void xuatSanPham(Scanner sc) {
         System.out.printf("%-10s| %-30s| %-10s| %-10s| %-15s| %-30s\n", "id", "ten", "loai", "gia", "so luong",
                 "nhacungcapId");
         for (Sanpham i : sanphamList) {
             System.out.print(i);
         }
+        System.out.println("Bam nut bat ky de tiep tuc...");
+        sc.nextLine();
     }
 
     private int readSl() {
@@ -220,6 +222,11 @@ public class DanhSachSanPham {
         return -1;
     }
 
+    public Sanpham getSanphamtheovt(int vt) {
+        Sanpham result = sanphamList[vt];
+        return result;
+    }
+
     public Sanpham[] timSanPhamTheoTen(String ten) {
         Sanpham result[] = null;
         int index = 0;
@@ -313,7 +320,7 @@ public class DanhSachSanPham {
     // return currPx;
     // }
 
-    public void mainMenu(Scanner sc, account curruser, dsphieuxuat lspx) {
+    public void mainMenu(Scanner sc, account curruser, dsphieuxuat lspx, dschitietpx lDschitietpx) {
         String option;
         // String currPX = null;
         do {
@@ -332,10 +339,10 @@ public class DanhSachSanPham {
 
             switch (option) {
                 case "1":
-                    xuatSanPham();
+                    xuatSanPham(sc);
                     break;
                 case "2":
-                    // currPX = menuDonHang(sc, currPX);
+                    lspx.menupx(sc, this, lDschitietpx);
                     break;
                 case "3":
                     if (!curruser.themSanPham()) {

@@ -128,12 +128,85 @@ public class dsphieuxuat {
         }
     }
 
-    public void menupx(Scanner sc) {
+    public void themSanPhamVaoHoaDon(Scanner sc, DanhSachSanPham lSanPham, Chitietpx ctpx) {
+        System.out.println("nhap id san pham ban muon them");
+        String id = sc.nextLine();
+        int vt = lSanPham.timSanPhamTheoId(id);
+        if (vt == -1) {
+            System.out.println("Khong tim thay san pham");
+            return;
+        }
+        Sanpham tempSanpham = lSanPham.getSanphamtheovt(vt);
+        int sl;
+        do {
+            System.out.printf("Nhap so luong san pham: ");
+            sl = checkPattern.checkInt(sc);
+            if (sl > tempSanpham.getSoLuong())
+                System.out.println("khong du hang ton kho vui long nhap lai");
+        } while (sl > tempSanpham.getSoLuong());
+        if (sl == 0)
+            return;
+        ctpx.themSanPham(id, sl);
+        System.out.println("Them thanh cong");
+    }
+
+    public void suaSLSanPham(Scanner sc, Chitietpx chitietpx) {
+        System.out.print("ID ban muon sua: ");
+        String id = sc.nextLine();
+        int vt = chitietpx.timSanPhamTheoId(id);
+        if (vt == -1) {
+            System.out.println("khong co san pham trong hoa don");
+            return;
+        }
+        System.out.print("nhap so luong muon thay doi: ");
+        int sl = checkPattern.checkInt(sc);
+        chitietpx.suaSoLuong(vt, sl);
+    }
+
+    public void xoaSanPhamKhoiHoaDon(Scanner sc, Chitietpx chitietpx) {
+        System.out.print("ID ban muon sua: ");
+        String id = sc.nextLine();
+        int vt = chitietpx.timSanPhamTheoId(id);
+        if (vt == -1) {
+            System.out.println("khong co san pham trong hoa don");
+            return;
+        }
+        chitietpx.xoaSanPham(id);
+        System.out.println("Xoa thanh cong");
+    }
+
+    public void hienthongtinsanpham(Scanner sc, Phieuxuat px, Chitietpx ctpx, DanhSachSanPham lSanPham) {
+        System.out.printf("%-46s%s\n", "", "Hoa Don");
+        System.out.println("Nguoi mua: " + px.getIdkhachhang());
+        System.out.println("Nguoi ban: " + px.getIdnguoiban());
+        System.out.println("Ngay mua hang: " + px.getNgayBan());
+        System.out.println(ctpx.hienThongTinHoaDon(lSanPham));
+        System.out.println("Bam nut bat ky de thoat....");
+        sc.nextLine();
+    }
+
+    public void inHoaDon(Phieuxuat px, Chitietpx ctpx, DanhSachSanPham lSanPham) {
+        try {
+            FileWriter fs = new FileWriter("hoadon.txt");
+            fs.write(String.format("%-46s %s\n", " ", "Hoa Don"));
+            fs.write("Nguoi mua: " + px.getIdkhachhang() + '\n');
+            fs.write("Nguoi ban: " + px.getIdnguoiban() + '\n');
+            fs.write("Ngay mua hang: " + px.getNgayBan() + '\n');
+            fs.write(ctpx.hienThongTinHoaDon(lSanPham));
+            fs.close();
+        } catch (Exception e) {
+        }
+    }
+
+    public void menupx(Scanner sc, DanhSachSanPham lSanPham, dschitietpx lschitietpx) {
         String option;
+        Phieuxuat currPx = new Phieuxuat();
+        Chitietpx currCTPX = new Chitietpx();
+        currPx.setChitietsanpham(currCTPX.getId());
         do {
             System.out.println();
             System.out.println("========== Menu Don Hang ==========");
-            System.out.println("1.Hien thong tin don hang hien tai");
+            System.out.println("1. Hien thong tin don hang hien tai");
             System.out.println("2. Them san pham vao don hang");
             System.out.println("3. Xoa san pham khoi don hang");
             System.out.println("4. Thay doi so luong cua san pham");
@@ -146,16 +219,20 @@ public class dsphieuxuat {
             option = sc.nextLine();
             switch (option) {
                 case "1":
-                    System.out.println("hien thong tin");
+                    hienthongtinsanpham(sc, currPx, currCTPX, lSanPham);
                     break;
                 case "2":
-                    System.out.println("them san pham");
+                    themSanPhamVaoHoaDon(sc, lSanPham, currCTPX);
                     break;
                 case "3":
-                    System.out.println("xoa san pham");
+                    xoaSanPhamKhoiHoaDon(sc, currCTPX);
                     break;
                 case "4":
-                    System.out.println("thay doi so luong");
+                    suaSLSanPham(sc, currCTPX);
+                    ;
+                    break;
+                case "5":
+                    lSanPham.xuatSanPham(sc);
                     break;
                 case "6":
                     System.out.println("Hien danh sach khach hang");
@@ -167,10 +244,24 @@ public class dsphieuxuat {
                     System.out.println("them khach hang moi");
                     break;
                 case "n":
+                    currCTPX = null;
+                    currPx = null;
+                    Chitietpx.setcountId((Chitietpx.getCountId() - 1));
+                    Phieuxuat.setcountId((Phieuxuat.getcountId() - 1));
                     System.out.println("huy don hang thanh cong");
                     break;
                 case "y":
+                    if (currCTPX.getDanhsachsanpham().equals("")) {
+                        System.out.println("Hoa don khong the bo trong san pham");
+                        option = "skip";
+                        break;
+                    }
+                    themPhieuXuat(currPx);
+                    lschitietpx.themCtPx(currCTPX);
+                    writeToFile();
+                    lschitietpx.writeToFile();
                     System.out.println("don hang thanh cong bat dau in hoa don");
+                    inHoaDon(currPx, currCTPX, lSanPham);
                     break;
                 default:
                     System.out.println("khong hop le vui long nhap lai");

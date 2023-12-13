@@ -51,6 +51,56 @@ public class Chitietpx {
         }
     }
 
+    public String hienThongTinHoaDon(DanhSachSanPham lssanpham) {
+        String result = String.format("%-60s %-12s %-12s\n", "Ten San Pham", "SL", "gia (vnd)");
+        result += "-----------------------------------------------------------------------------------------\n";
+        long total = 0;
+        int tongSL = 0;
+        for (int i = 0; i < danhsachsanpham.length; i++) {
+            int vt = lssanpham.timSanPhamTheoId(danhsachsanpham[i].idsanpham);
+            if (vt == -1)
+                continue;
+            Sanpham curr = lssanpham.getSanphamtheovt(vt);
+            String ten = curr.getTen();
+            int gia = curr.getGia();
+            total += gia * danhsachsanpham[i].soluong;
+            String currLine = String.format("%-60s %-12d %-,12d\n", ten, danhsachsanpham[i].soluong, gia);
+            result += currLine;
+            tongSL++;
+        }
+        result += "-----------------------------------------------------------------------------------------\n";
+        String summarize = String.format("%-60s %-12d %-,12d\n", "total", tongSL, total);
+        result += summarize;
+        return result;
+    }
+
+    public int timSanPhamTheoId(String id) {
+        for (int i = 0; i < danhsachsanpham.length; i++) {
+            if (danhsachsanpham[i].idsanpham.equals(id))
+                return i;
+        }
+        return -1;
+    }
+
+    public void suaSoLuong(int vt, int soluong) {
+        if (soluong == 0) {
+
+            return;
+        }
+        danhsachsanpham[vt].soluong = soluong;
+    }
+
+    public void xoaSanPham(String id) {
+        for (int i = 0; i < danhsachsanpham.length; i++) {
+            if (danhsachsanpham[i].idsanpham.equals(id)) {
+                for (int j = i; j < danhsachsanpham.length - 1; j++)
+                    danhsachsanpham[j] = danhsachsanpham[j + 1];
+                break;
+            }
+        }
+        danhsachsanpham = Arrays.copyOf(danhsachsanpham, danhsachsanpham.length - 1);
+    }
+
     public String getId() {
         return this.id;
     }
@@ -102,6 +152,10 @@ public class Chitietpx {
 
     public static void setcountId(int countId) {
         Chitietpx.countId = countId;
+    }
+
+    public static int getCountId() {
+        return countId;
     }
 
     @Override
