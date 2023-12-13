@@ -13,14 +13,6 @@ public class nvbanhang extends nhanvien {
     // this.sogiotangca = sogiotangca;
     // }
 
-    public nvbanhang(String id, long cccd, String name, String phonenumber, char gender, int ngay, int thang,
-            int nam, int luongcb, double hesoluong, String chucvu, String accid,
-            double sogiotangca) {
-        super(id, cccd, name, phonenumber, gender, ngay, thang, nam, 9000000, 1, chucvu, "");
-        setChucvu("nhan vien");
-        this.sogiotangca = sogiotangca;
-    }
-
     public nvbanhang(long cccd, String name, String phonenumber, char gender, int ngay, int thang,
             int nam, int luongcb, double hesoluong, String chucvu, String accid,
             double sogiotangca) {
@@ -69,6 +61,6 @@ public class nvbanhang extends nhanvien {
         return String.format("%-5s| %-13s| %-20s| %-11s| %-11s| %-10s| %-13s| %-12s| %-10s| %-10s| %-10s\n", id, cccd,
                 name,
                 getNewBirthday(), phonenumber, gender, luongcb, hesoluong, sogiotangca, chucvu,
-                getNewStartedDate());
+                getStartedDate());
     }
 }

@@ -65,6 +65,8 @@ public abstract class nhanvien extends mortals {
         this.hesoluong = hesoluong;
         this.chucvu = chucvu;
         birthday = new Date(namsinh, thangsinh - 1, ngaysinh);
+        startedDate = new Date();
+        this.startedDate.setYear(this.startedDate.getYear() + 1900);
         account = accid;
     }
 
@@ -114,20 +116,14 @@ public abstract class nhanvien extends mortals {
         this.chucvu = chucvu;
     }
 
-    public Date getStartedDate() {
-        return this.startedDate;
+    public String getStartedDate() {
+        return this.startedDate.getDate() + "/" + (this.startedDate.getMonth() + 1) + "/"
+                + this.startedDate.getYear();
     }
 
     public String getNewBirthday() {
         return this.birthday.getDate() + "/" + (this.birthday.getMonth() + 1) + "/"
                 + this.birthday.getYear();
-    }
-
-    public String getNewStartedDate() {
-        Date newStartedDate = new Date();
-        int year = newStartedDate.getYear();
-        newStartedDate.setYear((year + 1900));
-        return newStartedDate.getDate() + "/" + (newStartedDate.getMonth() + 1) + "/" + newStartedDate.getYear();
     }
 
     public abstract int tinhluong();
@@ -139,6 +135,6 @@ public abstract class nhanvien extends mortals {
         return String.format("%-5s| %-15s| %-10s| %-11s| %-10s| %-15s| %-15s| %-10s| %-20s\n", id,
                 name,
                 getNewBirthday(), phonenumber, gender, luongcb, hesoluong, chucvu,
-                getNewStartedDate());
+                getStartedDate());
     }
 }

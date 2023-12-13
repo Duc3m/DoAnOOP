@@ -216,39 +216,40 @@ public class DanhSachNV {
         }
     }
 
-    public void input() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("nhap so nhan vien can them: ");
-        soluong = Integer.parseInt(sc.nextLine());
-        dsnv = new nhanvien[soluong];
-        for (int i = 0; i < soluong; i++) {
-            System.out.println("====================");
-            System.out.println("Nhan vien thu " + (i + 1));
-            System.out.print("Nhap ten nhan vien: ");
-            String newName = sc.nextLine();
+    // public void input() {
+    // Scanner sc = new Scanner(System.in);
+    // System.out.println("nhap so nhan vien can them: ");
+    // soluong = Integer.parseInt(sc.nextLine());
+    // dsnv = new nhanvien[soluong];
+    // for (int i = 0; i < soluong; i++) {
+    // System.out.println("====================");
+    // System.out.println("Nhan vien thu " + (i + 1));
+    // System.out.print("Nhap ten nhan vien: ");
+    // String newName = sc.nextLine();
 
-            System.out.print("Nhap so CCCD/CMND cua nhan vien: ");
-            long newCccd = sc.nextLong();
-            sc.nextLine();
+    // System.out.print("Nhap so CCCD/CMND cua nhan vien: ");
+    // long newCccd = sc.nextLong();
+    // sc.nextLine();
 
-            System.out.print("Nhap ngay sinh cua nhan vien: ");
-            int newDay = Integer.parseInt(sc.nextLine());
-            int newMonth = Integer.parseInt(sc.nextLine());
-            int newYear = Integer.parseInt(sc.nextLine());
+    // System.out.print("Nhap ngay sinh cua nhan vien: ");
+    // int newDay = Integer.parseInt(sc.nextLine());
+    // int newMonth = Integer.parseInt(sc.nextLine());
+    // int newYear = Integer.parseInt(sc.nextLine());
 
-            System.out.print("Nhap so dien thoai cua nhan vien: ");
-            String newSDT = sc.nextLine();
+    // System.out.print("Nhap so dien thoai cua nhan vien: ");
+    // String newSDT = sc.nextLine();
 
-            System.out.print("Nhap gioi tinh cua nhan vien (M/F): ");
-            char newGender = sc.nextLine().charAt(0);
+    // System.out.print("Nhap gioi tinh cua nhan vien (M/F): ");
+    // char newGender = sc.nextLine().charAt(0);
 
-            dsnv[i] = new nvbanhang(newCccd, newName, newSDT, newGender, newDay, newMonth,
-                    newYear,
-                    9000000,
-                    1.0, "nhan vien", "", 2.0);
-        }
-        sc.close();
-    }
+    // dsnv[i] = new nvbanhang(newCccd, newName, newSDT, newGender, newDay,
+    // newMonth,
+    // newYear,
+    // 9000000,
+    // 1.0, "nhan vien", "", 2.0);
+    // }
+    // sc.close();
+    // }
 
     public void addNewNV(Scanner sc) {
 
@@ -271,7 +272,7 @@ public class DanhSachNV {
         System.out.print("Nhap gioi tinh cua nhan vien (M/F): ");
         char newGender = checkPattern.checkgt(sc);
 
-        System.out.print("Nhap so gio tang cua nhan vien: ");
+        System.out.print("Nhap so gio tang ca (he so trach nhiem) cua nhan vien (quan ly): ");
         double newSGTC = Double.parseDouble(sc.nextLine());
 
         nhanvien newNV = new nvbanhang(newCccd, newName, newSDT, newGender, newBirthDay, newBirthMonth,
@@ -324,16 +325,16 @@ public class DanhSachNV {
             dsnv = new nhanvien[4];
             dsnv[0] = new nvbanhang(231231232333L, "Tran Dai Van", "0902522842", 'F', 20, 10, 2004, 9000000, 1.0,
                     "nhan vien", "",
-                    4.0);
+                    4.0, 12, 7, 2021);
             dsnv[1] = new nvbanhang(123231233312L, "Nguyen Dai Nghia", "0902512332", 'F', 12, 4, 1999, 9000000, 1.0,
                     "nhan vien", "",
-                    1.0);
+                    1.0, 3, 5, 2022);
             dsnv[2] = new nvbanhang(121233123312L, "Truong Minh Thu", "0123312325", 'M', 5, 9, 1999, 9000000, 1.0,
                     "nhan vien", "",
-                    2.0);
+                    2.0, 17, 1, 2021);
             dsnv[3] = new nvbanhang(231232323312L, "Tran Duc Em", "0123123225", 'F', 28, 2, 2000, 9000000, 1.0,
                     "nhan vien", "",
-                    5.0);
+                    5.0, 2, 12, 2022);
             soluong = 4;
             writeToFile();
             return;
@@ -426,9 +427,5 @@ public class DanhSachNV {
     // Scanner sc = new Scanner(System.in);
     // list.readFile();
     // list.mainMenu(sc);
-    // list.xuatNhanVien();
-    // list.writeToFile();
-    // int x = list.readSl();
-    // System.out.println(x);
     // }
 }
