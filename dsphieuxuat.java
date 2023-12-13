@@ -258,6 +258,8 @@ public class dsphieuxuat {
                     }
                     themPhieuXuat(currPx);
                     lschitietpx.themCtPx(currCTPX);
+                    writeToFile();
+                    lschitietpx.writeToFile();
                     System.out.println("don hang thanh cong bat dau in hoa don");
                     inHoaDon(currPx, currCTPX, lSanPham);
                     break;
