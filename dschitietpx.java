@@ -79,6 +79,11 @@ public class dschitietpx {
         return sl;
     }
 
+    public Chitietpx timtheovt(int vt) {
+        Chitietpx result = lsctpx[vt];
+        return result;
+    }
+
     public void readFile() {
         soluong = readSl();
         if (soluong == -1) {
