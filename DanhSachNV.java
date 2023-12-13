@@ -282,12 +282,12 @@ public class DanhSachNV {
         System.out.println("Them nhan vien moi thanh cong!");
     }
 
-    public int readSl() {
+    private int readSl() {
         int sl = 0;
         Pattern header = Pattern.compile(
-                "id\\s{3}\\| CCCD\\s{9}\\| Ten\\s{17}\\| Ngay sinh\\s{2}\\| SDT\\s{8}\\| Luong co ban\\s{1}\\| He so luong\\s{1}\\| SGTC/HSTN\\s{1}\\| Chuc vu\\s{3}\\| Ngay BDLV\\s{1}$");
+                "id\\s{3}\\| CCCD\\s{9}\\| Ten\\s{17}\\| Ngay sinh\\s{2}\\| SDT\\s{8}\\| Gioi tinh \\| Luong co ban\\s{1}\\| He so luong\\s{1}\\| SGTC\\/HSTN\\s{1}\\| Chuc vu\\s{3}\\| Ngay BDLV\\s{1}$");
         Pattern body = Pattern.compile(
-                "^nv\\d{1,3}\\s{0,2}\\| \\d{12} \\|[a-zA-Z ]{1,16}\\s{0,16}\\| \\d{1,2}\\/\\d{1,2}\\/\\d{4}\\s{0,2}\\| 0\\d{9} \\| (F|M|f|m)\\s{9}\\| \\d{4,10}\\s{5,11}\\| \\d+.?\\d+\\s{0,12}\\| \\d+.?\\d+\\s{0,9}\\| (nhan vien | quan ly   )\\| \\d{1,2}\\/\\d{1,2}\\/\\d{4}\\s{0,12}$");
+                "^nv\\d{1,3}\\s{0,2}\\| \\d{12} \\|[a-zA-Z ]{1,20}\\s{0,20}\\| \\d{1,2}\\/\\d{1,2}\\/\\d{4}\\s{0,3}\\| 0\\d{9} \\| (F|M|f|m)\\s{9}\\| \\d{4,10}\\s{5,11}\\| \\d+.?\\d+\\s{0,12}\\| \\d+.?\\d+\\s{0,9}\\| (nhan vien | quan ly   )\\| \\d{1,2}\\/\\d{1,2}\\/\\d{4}\\s{0,12}$");
         Matcher findmatch;
         try {
             BufferedReader fs = new BufferedReader(new FileReader("nhanvien.txt"));
@@ -362,17 +362,21 @@ public class DanhSachNV {
                 sc.next();
                 char gender = sc.next().charAt(0);
                 sc.next();
+                sc.next();
+                sc.next();
                 String heSoLuong = sc.next();
                 sc.next();
                 String sgtc_hstn = sc.next();
                 sc.next();
+                sc.next();
+                sc.next();
                 String NgayBDLV[] = new String[3];
                 NgayBDLV = sc.next().split("\\/");
-                dsnv[i] = new nvbanhang(Long.parseLong(cccd), name, sdt, gender, Integer.parseInt(ngaysinh[0]),
+                dsnv[i] = new nvbanhang(id, Long.parseLong(cccd), name, sdt, gender, Integer.parseInt(ngaysinh[0]),
                         Integer.parseInt(ngaysinh[1]), Integer.parseInt(ngaysinh[2]), 9000000,
                         Double.parseDouble(heSoLuong), "nhan vien",
                         "", Double.parseDouble(sgtc_hstn), Integer.parseInt(NgayBDLV[0]), Integer.parseInt(NgayBDLV[1]),
-                        Integer.parseInt(NgayBDLV[3]));
+                        Integer.parseInt(NgayBDLV[2]));
             }
         } catch (Exception e) {
         }
@@ -416,12 +420,14 @@ public class DanhSachNV {
         } while (!option.equals("x"));
     }
 
-    // public static void main(String[] args) {
-    // DanhSachNV list = new DanhSachNV();
-    // Scanner sc = new Scanner(System.in);
-    // list.readFile();
-    // list.mainMenu(sc);
-    // list.xuatNhanVien();
-    // list.writeToFile();
-    // }
+    public static void main(String[] args) {
+        DanhSachNV list = new DanhSachNV();
+        Scanner sc = new Scanner(System.in);
+        list.readFile();
+        list.mainMenu(sc);
+        // list.xuatNhanVien();
+        // list.writeToFile();
+        // int x = list.readSl();
+        // System.out.println(x);
+    }
 }

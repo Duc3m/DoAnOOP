@@ -36,11 +36,13 @@ public class nvbanhang extends nhanvien {
         this.sogiotangca = sogiotangca;
     }
 
-    // public nvbanhang(long cccd, String name, String address, String phonenumber,
-    // char gender, int ngay, int thang,
-    // int nam) {
-    // super(cccd, name, address, phonenumber, gender, ngay, thang, nam);
-    // }
+    public nvbanhang(String id, long cccd, String name, String phonenumber, char gender, int ngay, int thang,
+            int nam, int luongcb, double hesoluong, String chucvu, String accid,
+            double sogiotangca, int ngaylv, int thanglv, int namlv) {
+        super(cccd, name, phonenumber, gender, ngay, thang, nam, 9000000, 1, chucvu, "", ngaylv, thanglv, namlv);
+        this.id = id;
+        this.sogiotangca = sogiotangca;
+    }
 
     public double getSogiotangca() {
         return this.sogiotangca;
