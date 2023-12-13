@@ -216,39 +216,6 @@ public class DanhSachNV {
         }
     }
 
-    private int readSL() {
-        int sl = 0;
-        Pattern header = Pattern.compile(
-                "^id\\s{3}\\| Ten\\s{12}\\| Ngay sinh \\| SDT\\s{8}\\| Gioi tinh \\| Luong co ban   \\| He so luong    \\| Chuc vu   \\| Ngay bat dau\\s{8}$");
-        Pattern body = Pattern.compile(
-                "^nv\\d{1,3}\\s{0,2}\\| [a-zA-z ]{1,16}\\s{0,16}\\| \\d{1,2}\\/\\d{1,2}\\/\\d{4}\\s{0,2}\\| 0\\d{9} \\| (F|M)\\s{9}\\| \\d{4,10}\\s{5,11}\\| \\d+.?\\d+\\s{0,12}\\| (nhan vien |quan ly   )\\| \\d{1,2}\\/\\d{1,2}\\/\\d{4}\\s{0,12}$");
-        Matcher findmatch;
-        try {
-            BufferedReader fs = new BufferedReader(new FileReader("nhanvien.txt"));
-            String currLine = fs.readLine();
-            findmatch = header.matcher(currLine);
-            if (!findmatch.find()) {
-                fs.close();
-                return -1;
-            }
-            while (currLine != null) {
-                currLine = fs.readLine();
-                if (currLine == null)
-                    break;
-                findmatch = body.matcher(currLine);
-                if (!findmatch.find()) {
-                    fs.close();
-                    return -1;
-                }
-                sl++;
-            }
-            fs.close();
-        } catch (Exception e) {
-            sl = -1;
-        }
-        return sl;
-    }
-
     public void input() {
         Scanner sc = new Scanner(System.in);
         System.out.println("nhap so nhan vien can them: ");
