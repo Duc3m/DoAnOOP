@@ -15,7 +15,7 @@ public class Phieuxuat {
         this.idkhachhang = "";
         this.chitietsanpham = "";
         this.ngayban = new Date();
-        this.ngayban.setTime(this.ngayban.getYear() + 1900);
+        this.ngayban.setYear(this.ngayban.getYear() + 1900);
         this.idnguoiban = "";
     }
 

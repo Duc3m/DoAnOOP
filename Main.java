@@ -5,6 +5,7 @@ public class Main {
     private static listaccount lsacc = new listaccount();
     private static DanhSachSanPham lssanpham = new DanhSachSanPham();
     private static dsphieuxuat lsphieuxuat = new dsphieuxuat();
+    private static dschitietpx lschitietpx = new dschitietpx();
     private static dsNhaCungCap lsnhacc = new dsNhaCungCap();
     private static dskhachhang lskh = new dskhachhang();
 
@@ -44,7 +45,7 @@ public class Main {
                     System.out.println("menu nhan vien");
                     break;
                 case "3":
-                    lssanpham.mainMenu(sc, curruser, lsphieuxuat);
+                    lssanpham.mainMenu(sc, curruser, lsphieuxuat, lschitietpx);
                     break;
                 case "4":
                     System.out.println("menu khach hang");
@@ -69,6 +70,7 @@ public class Main {
         lsacc.readFile();
         lssanpham.readFile();
         lsphieuxuat.readFile();
+        lschitietpx.readFile();
         while (isrunning) {
             if (curruser == null) {
                 String choice;
