@@ -1,0 +1,6 @@
+
+Id        | Ten                           | Diachi         | Sodt           
+ncc1      | APPLE                         | TPHCM          | 0987654321     
+ncc2      | XIAOMI                        | TPHCM          | 0987653421     
+ncc4      | VIVO                          | TPHCM          | 0987654312     
+ncc5      | cc                            | asd            | 0987654321     
