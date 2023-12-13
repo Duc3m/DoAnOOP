@@ -422,10 +422,12 @@ public class DanhSachNV {
         } while (!option.equals("x"));
     }
 
-    // public static void main(String[] args) {
-    // DanhSachNV list = new DanhSachNV();
-    // Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+    DanhSachNV list = new DanhSachNV();
+    Scanner sc = new Scanner(System.in);
     // list.readFile();
-    // list.mainMenu(sc);
-    // }
+    list.mainMenu(sc);
+    // list.xuatNhanVien();
+    // list.writeToFile();
+    }
 }
