@@ -344,9 +344,9 @@ public class DanhSachNV {
             sc.nextLine();
             for (int i = 0; i < soluong; i++) {
                 String id = sc.next();
-                sc.next();
+                sc.next(); // bo qua |
                 String cccd = sc.next();
-                sc.next();
+                sc.next(); // bo qua |
                 String name = "";
                 while (sc.hasNext()) {
                     String currLine = sc.next();
@@ -357,19 +357,20 @@ public class DanhSachNV {
                 }
                 String ngaysinh[] = new String[3];
                 ngaysinh = sc.next().split("\\/");
-                sc.next();
+                sc.next(); // bo qua |
                 String sdt = sc.next();
-                sc.next();
+                sc.next(); // bo qua |
                 char gender = sc.next().charAt(0);
-                sc.next();
-                sc.next();
-                sc.next();
+                sc.next(); // bo qua |
+                sc.next(); // bo qua luong co ban
+                sc.next(); // bo qua |
                 String heSoLuong = sc.next();
-                sc.next();
+                sc.next(); // bo qua |
                 String sgtc_hstn = sc.next();
-                sc.next();
-                sc.next();
-                sc.next();
+                sc.next(); // bo qua |
+                sc.next(); // bo qua nhan
+                sc.next(); // bo qua vien
+                sc.next(); // bo qua |
                 String NgayBDLV[] = new String[3];
                 NgayBDLV = sc.next().split("\\/");
                 dsnv[i] = new nvbanhang(id, Long.parseLong(cccd), name, sdt, gender, Integer.parseInt(ngaysinh[0]),
@@ -420,14 +421,14 @@ public class DanhSachNV {
         } while (!option.equals("x"));
     }
 
-    public static void main(String[] args) {
-        DanhSachNV list = new DanhSachNV();
-        Scanner sc = new Scanner(System.in);
-        list.readFile();
-        list.mainMenu(sc);
-        // list.xuatNhanVien();
-        // list.writeToFile();
-        // int x = list.readSl();
-        // System.out.println(x);
-    }
+    // public static void main(String[] args) {
+    // DanhSachNV list = new DanhSachNV();
+    // Scanner sc = new Scanner(System.in);
+    // list.readFile();
+    // list.mainMenu(sc);
+    // list.xuatNhanVien();
+    // list.writeToFile();
+    // int x = list.readSl();
+    // System.out.println(x);
+    // }
 }
