@@ -5,14 +5,6 @@ public class nvbanhang extends nhanvien {
         super();
     }
 
-    // public nvbanhang(String id, int luongcb, double hesoluong, String chucvu, int
-    // ngay, int thang, int nam,
-    // String accid,
-    // double sogiotangca) {
-    // super(id, luongcb, hesoluong, chucvu, ngay, thang, nam, accid);
-    // this.sogiotangca = sogiotangca;
-    // }
-
     public nvbanhang(long cccd, String name, String phonenumber, char gender, int ngay, int thang,
             int nam, int luongcb, double hesoluong, String chucvu, String accid,
             double sogiotangca) {

@@ -15,35 +15,6 @@ public abstract class nhanvien extends mortals {
         this.startedDate.setYear(this.startedDate.getYear() + 1900);
     }
 
-    // public nhanvien(String id, int luongcb, double hesoluong, String chucvu, int
-    // ngay, int thang, int nam,
-    // String account) {
-    // this.id = id;
-    // this.luongcb = 9000000;
-    // this.hesoluong = 1.0;
-    // this.chucvu = chucvu;
-    // startedDate = new Date(ngay, thang, nam);
-    // this.account = account;
-    // }
-
-    // public nhanvien(int luongcb, double hesoluong, String chucvu, int ngay, int
-    // thang, int nam, String accid) {
-    // countId++;
-    // id = "nv" + countId;
-    // this.hesoluong = hesoluong;
-    // this.chucvu = chucvu;
-    // startedDate = new Date(ngay, thang, nam);
-    // account = accid;
-    // }
-
-    public nhanvien(long cccd, String name, String phonenumber, char gender, int ngay, int thang,
-            int nam) {
-        super(cccd, name, phonenumber, gender, ngay, thang, nam);
-        countId++;
-        id = "nv" + countId;
-        startedDate = new Date(nam, thang - 1, ngay);
-    }
-
     public nhanvien(String id, long cccd, String name, String phonenumber, char gender, int ngaysinh,
             int thangsinh, int namsinh, int luongcb, double hesoluong, String chucvu, String accid) {
         super(cccd, name, phonenumber, gender, ngaysinh, thangsinh, namsinh);
