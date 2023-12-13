@@ -313,14 +313,14 @@ public class DanhSachSanPham {
     // return currPx;
     // }
 
-    public void mainMenu(Scanner sc, account curruser) {
+    public void mainMenu(Scanner sc, account curruser, dsphieuxuat lspx) {
         String option;
         // String currPX = null;
         do {
             System.out.println();
             System.out.println("========== Menu San Pham ==========");
             System.out.println("1. Hien danh sach san pham hien tai");
-            System.out.println("2. Thao tac voi don hang");
+            System.out.println("2. Tao don hang moi");
             if (curruser.getType().equals("QL")) {
                 System.out.println("3. Them san pham moi");
                 System.out.println("4. Xoa san pham");
