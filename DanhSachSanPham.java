@@ -27,18 +27,20 @@ public class DanhSachSanPham {
         this.sanphamList = tempSanphams;
     }
 
-    public void xuatSanPham() {
+    public void xuatSanPham(Scanner sc) {
         System.out.printf("%-10s| %-30s| %-10s| %-10s| %-15s| %-30s\n", "id", "ten", "loai", "gia", "so luong",
                 "nhacungcapId");
         for (Sanpham i : sanphamList) {
             System.out.print(i);
         }
+        System.out.println("Bam nut bat ky de tiep tuc...");
+        sc.nextLine();
     }
 
     private int readSl() {
         int sl = 0;
         Pattern header = Pattern.compile(
-                "id\s{8}\\| ten\s{27}\\| loai\s{6}\\| gia\s{7}\\| so luong\s{7}\\| nhacungcapId\s{3}$");
+                "id\\s{8}\\| ten\\s{27}\\| loai\\s{6}\\| gia\\s{7}\\| so luong\\s{7}\\| nhacungcapId\\s{3}$");
 
         Pattern body = Pattern.compile(
                 "^(pk|dt)\\d{1,9}\\s{0,8}\\| [a-zA-z0-9-_ ]{0,30}\\| (phukien\\s{3}|dienthoai\\s{1})\\| \\d{4,10}\\s{0,6}\\| \\d{1,9}\\s{0,15}\\| ncc\\d{1,9}\\s{0,11}$");
@@ -220,6 +222,11 @@ public class DanhSachSanPham {
         return -1;
     }
 
+    public Sanpham getSanphamtheovt(int vt) {
+        Sanpham result = sanphamList[vt];
+        return result;
+    }
+
     public Sanpham[] timSanPhamTheoTen(String ten) {
         Sanpham result[] = null;
         int index = 0;
@@ -313,14 +320,14 @@ public class DanhSachSanPham {
     // return currPx;
     // }
 
-    public void mainMenu(Scanner sc, account curruser) {
+    public void mainMenu(Scanner sc, account curruser, dsphieuxuat lspx, dschitietpx lDschitietpx) {
         String option;
         // String currPX = null;
         do {
             System.out.println();
             System.out.println("========== Menu San Pham ==========");
             System.out.println("1. Hien danh sach san pham hien tai");
-            System.out.println("2. Thao tac voi don hang");
+            System.out.println("2. Tao don hang moi");
             if (curruser.getType().equals("QL")) {
                 System.out.println("3. Them san pham moi");
                 System.out.println("4. Xoa san pham");
@@ -332,10 +339,10 @@ public class DanhSachSanPham {
 
             switch (option) {
                 case "1":
-                    xuatSanPham();
+                    xuatSanPham(sc);
                     break;
                 case "2":
-                    // currPX = menuDonHang(sc, currPX);
+                    lspx.menupx(sc, this, lDschitietpx);
                     break;
                 case "3":
                     if (!curruser.themSanPham()) {

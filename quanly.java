@@ -10,6 +10,7 @@ public class quanly extends nhanvien {
             int thangsinh, int namsinh, int luongcb, double hesoluong, String chucvu, String accid,
             double hesotrachnhiem) {
         super(id, cccd, name, phonenumber, gender, ngaysinh, thangsinh, namsinh, luongcb, hesoluong, chucvu, accid);
+        setChucvu("quan ly");
         this.hesotrachnhiem = hesotrachnhiem;
     }
 
@@ -17,6 +18,7 @@ public class quanly extends nhanvien {
             int thangsinh, int namsinh, int luongcb, double hesoluong, String chucvu, String accid,
             double hesotrachnhiem) {
         super(cccd, name, phonenumber, gender, ngaysinh, thangsinh, namsinh, luongcb, hesoluong, chucvu, accid);
+        setChucvu("quan ly");
         this.hesotrachnhiem = hesotrachnhiem;
     }
 

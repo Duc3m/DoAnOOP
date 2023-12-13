@@ -5,7 +5,7 @@ public class Phieuxuat {
     private static int countId;
     private String id;
     private String idkhachhang;
-    private String chitietsanpham;
+    private String chitietsanpham; // tham chiếu tới chi tiết phiếu xuất
     private Date ngayban;
     private String idnguoiban;
 
@@ -15,7 +15,7 @@ public class Phieuxuat {
         this.idkhachhang = "";
         this.chitietsanpham = "";
         this.ngayban = new Date();
-        this.ngayban.setTime(this.ngayban.getYear() + 1900);
+        this.ngayban.setYear(this.ngayban.getYear() + 1900);
         this.idnguoiban = "";
     }
 

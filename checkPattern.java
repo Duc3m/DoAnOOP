@@ -89,7 +89,7 @@ public class checkPattern {
 
     public static char checkgt(Scanner sc) {
         String result;
-        Pattern intPattern = Pattern.compile("^(M|F)$");
+        Pattern intPattern = Pattern.compile("^(M|F|f|m)$");
         do {
             String temp = sc.nextLine();
             Matcher findMatch = intPattern.matcher(temp);
