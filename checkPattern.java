@@ -124,4 +124,16 @@ public class checkPattern {
         } while (true);
     }
 
+    public static String checkIdSP(Scanner sc) {
+        String result;
+        Pattern idPattern = Pattern.compile("^(dt|pk)\\d+$");
+        do {
+            result = sc.nextLine();
+            Matcher findMatch = idPattern.matcher(result);
+            if (findMatch.find())
+                return result;
+            System.out.print("Id san pham phai bat dau bang \"pk\" hoac \"dt\" va ket thuc bang mot so ");
+        } while (true);
+    }
+
 }

@@ -1,5 +1,4 @@
 import java.util.Scanner;
-//Dit me thang duc ngu nhu cho
 
 public class Main {
     private static account curruser = null;
@@ -7,16 +6,16 @@ public class Main {
     private static DanhSachSanPham lssanpham = new DanhSachSanPham();
     private static dsphieuxuat lsphieuxuat = new dsphieuxuat();
     private static dschitietpx lschitietpx = new dschitietpx();
+    private static DanhSachNV lsnhanvien = new DanhSachNV();
     private static dsNhaCungCap lsnhacc = new dsNhaCungCap();
     private static dskhachhang lskh = new dskhachhang();
 
     private static account defaultMenu(Scanner sc, listaccount ls) {
-        System.out.println("Vui long dang nhap");
-        System.out.println("-----------------------------------------------------------------");
-        System.out.print("nhap ten dang nhap: ");
+        System.out.println("\n========== Dang nhap ==========");
+        System.out.print("Nhap ten dang nhap: ");
         String tk = sc.next();
         sc.nextLine();
-        System.out.print("nhap mat khau: ");
+        System.out.print("Nhap mat khau: ");
         String mk = sc.next();
         sc.nextLine();
         return ls.checkAccount(tk, mk);
@@ -25,10 +24,9 @@ public class Main {
     private static void loginMenu(Scanner sc) {
         String choice = null;
         do {
-            System.out.println("-----------------------------------------------------------------");
-            System.out.println("Menu cua " + (curruser.getType().equals("QL") ? "Quan ly" : "Nhan vien"));
-            System.out.println("-----------------------------------------------------------------");
-            System.out.println("Vui long chon thao tac ban muon lam: ");
+            System.out.println();
+            System.out.println("========== Menu cua " + (curruser.getType().equals("QL") ? "Quan ly " : "Nhan vien ")
+                    + "==========");
             System.out.println("1. Lam viec voi tai khoan");
             System.out.println("2. Lam viec voi nhan vien");
             System.out.println("3. Lam viec voi san pham");
@@ -43,7 +41,7 @@ public class Main {
                     curruser.menuACC(sc, lsacc);
                     break;
                 case "2":
-                    System.out.println("menu nhan vien");
+                    lsnhanvien.mainMenu(sc, curruser);
                     break;
                 case "3":
                     lssanpham.mainMenu(sc, curruser, lsphieuxuat, lschitietpx);
@@ -55,7 +53,7 @@ public class Main {
                     System.out.println("tinh luong");
                     break;
                 case "x":
-                    System.out.println("da dang xuat");
+                    System.out.println("Da dang xuat");
                     break;
                 default:
                     System.out.println("khong hop le vui long nhap lai");
@@ -78,15 +76,15 @@ public class Main {
                 do {
                     if (curruser != null)
                         break;
-                    System.out.println("chon viec ban muon lam: ");
-                    System.out.println("1. Dang nhap");
-                    System.out.println("x. de thoat");
+                    System.out.println("\n1. Dang nhap");
+                    System.out.println("x. De thoat");
+                    System.out.print("Chon viec ban muon lam: ");
                     choice = sc.nextLine();
                     switch (choice) {
                         case "1":
                             curruser = defaultMenu(sc, lsacc);
                             if (curruser == null) {
-                                System.out.println("tai khoan hoac mat khau khong dung vui long nhap lai");
+                                System.out.println("Tai khoan hoac mat khau khong dung");
                                 continue;
                             }
                             break;
@@ -94,7 +92,7 @@ public class Main {
                             isrunning = false;
                             break;
                         default:
-                            System.out.println("Khong hop le vui long nhap lai");
+                            System.out.println("\nKhong hop le vui long nhap lai");
                             break;
                     }
                 } while (!choice.equals("x"));
