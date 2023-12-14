@@ -64,6 +64,7 @@ public class DanhSachNV {
             dsnv = Arrays.copyOf(dsnv, soluong - 1);
             soluong--;
             System.out.println("Xoa nhan vien thanh cong!");
+            writeToFile();
         }
     }
 
@@ -189,6 +190,7 @@ public class DanhSachNV {
                     break;
             }
         } while (!option.equals("x"));
+        writeToFile();
     }
 
     public void xuatNhanVien() {
@@ -281,6 +283,7 @@ public class DanhSachNV {
                 1.0, "nhan vien", "", newSGTC);
         addNV(newNV);
         System.out.println("Them nhan vien moi thanh cong!");
+        writeToFile();
     }
 
     private int readSl() {
@@ -321,7 +324,7 @@ public class DanhSachNV {
     public void readFile() {
         this.soluong = readSl();
         if (soluong == -1) {
-            System.out.println("Khong tim thay file hoac file bi loi! Bat dau khoi tao danh sach co san.");
+            System.out.println("Khong tim thay file nhan vien hoac file bi loi! Bat dau khoi tao danh sach co san.");
             dsnv = new nhanvien[4];
             dsnv[0] = new nvbanhang(231231232333L, "Tran Dai Van", "0902522842", 'M', 20, 10, 2004, 9000000, 1.0,
                     "nhan vien", "",

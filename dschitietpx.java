@@ -91,7 +91,8 @@ public class dschitietpx {
             lsctpx = new Chitietpx[2];
             lsctpx[0] = new Chitietpx("dt1,2 dt2,1 ", lSanPham);
             lsctpx[1] = new Chitietpx("pk1,1 ", lSanPham);
-            soluong++;
+            soluong = 2;
+            writeToFile();
             return;
         }
         try {

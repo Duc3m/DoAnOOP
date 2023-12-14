@@ -31,12 +31,12 @@ public class dskhachhang {
         }
     }
 
-    public int readSl() {
+    private int readSl() {
         int sl = 0;
         Pattern header = Pattern.compile(
-                "Id\\s{3}\\| CCCD\\s{11}\\| Ten\\s{12}\\| Ngay sinh\\s{1}\\| SDT\\s{8}\\| Gioi tinh");
+                "Id\\s{3}\\| CCCD\\s{11}\\| Ten\\s{12}\\| Ngay sinh\\s{1}\\| SDT\\s{8}\\| Gioi tinh $");
         Pattern body = Pattern.compile(
-                "kh\\d{1,4}\\s{0,2}\\| \\d{12}\\s{1}\\| [a-zA-Z ]{1,20}\\s{0,16}\\| \\d{1,2}\\/\\d{1,2}\\/\\d{4}\\s{3}\\| 0\\d{9}\\s{1}\\| \\w{1}");
+                "^kh\\d{1,4}\\s{0,2}\\| \\d{12}\\s{3}\\| [a-zA-Z ]{1,20}\\s{0,16}\\| \\d{1,2}\\/\\d{1,2}\\/\\d{4}\\s{0,2}\\| 0\\d{9}\\s{1}\\| (F|M|f|m)\\s{9}$");
         Matcher findmatch;
         try {
             BufferedReader fs = new BufferedReader(new FileReader("khachhang.txt"));
@@ -83,7 +83,7 @@ public class dskhachhang {
     public void readFile() {
         this.soluong = readSl();
         if (soluong == -1) {
-            System.out.println("Khong tim thay file hoac file bi loi! Bat dau khoi tao danh sach co san.");
+            System.out.println("Khong tim thay file khach hang hoac file bi loi! Bat dau khoi tao danh sach co san.");
             dskh = new khachhang[5];
             dskh[0] = new khachhang(123456789000L, "Duc", 3, 4, 2004, "0987654321", 'M');
             dskh[1] = new khachhang(123456789000L, "Duc Em", 3, 4, 2004, "0987654321", 'M');
@@ -120,6 +120,7 @@ public class dskhachhang {
                 dskh[i] = new khachhang(id, Long.parseLong(cccd), name, Integer.parseInt(ngaysinh[0]),
                         Integer.parseInt(ngaysinh[1]), Integer.parseInt(ngaysinh[2]), sdt, gender);
             }
+            khachhang.setCountId(Integer.parseInt(dskh[soluong - 1].getId().replace("kh", "")));
         } catch (Exception e) {
 
         }
@@ -138,7 +139,7 @@ public class dskhachhang {
         System.out.print("Nhap ten khach hang moi: ");
         String name = sc.nextLine();
 
-        System.out.println("Nhap ngay sinh khach hang moi.");
+        System.out.println("Nhap ngay sinh khach hang moi");
         System.out.print("Nhap ngay sinh: ");
         int newday = checkPattern.checkNgayThang(sc);
         System.out.print("Nhap thang sinh: ");
@@ -156,7 +157,7 @@ public class dskhachhang {
         themKH(newKH);
         XuatKH();
         System.out.println("Da them thanh cong.");
-
+        writeToFile();
     }
 
     public int SearchKHId(String id) {
@@ -195,6 +196,7 @@ public class dskhachhang {
             soluong--;
             System.out.println();
             XuatKH();
+            writeToFile();
             System.out.println("Da xoa thanh cong.");
         }
     }
@@ -298,6 +300,7 @@ public class dskhachhang {
                     break;
             }
         } while (!option.equals("x"));
+        writeToFile();
     }
 
     public void mainMenu(Scanner sc) {
