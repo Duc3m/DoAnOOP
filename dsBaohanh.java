@@ -96,8 +96,8 @@ public class dsBaohanh {
             System.out.println("Khong tim thay file bao hanh hoac file bi loi khoi tao mang co san");
             lsbaBaohanhs = new Baohanh[2];
             lsbaBaohanhs[0] = new Baohanh("px1", 12);
-            lsbaBaohanhs[1] = new Baohanh("px2", 12)
-            soluong =2;
+            lsbaBaohanhs[1] = new Baohanh("px2", 12);
+            soluong = 2;
             writeToFile();
             return;
         }
