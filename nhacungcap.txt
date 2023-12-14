@@ -1,6 +1,6 @@
 
 Id        | Ten                           | Diachi         | Sodt           
 ncc1      | APPLE                         | TPHCM          | 0987654321     
-ncc3      | SAMSUM                        | TPHCM          | 0978654321     
-ncc4      | VIVO                          | TPHCM          | 0987654312     
-ncc5      | asd                           | das            | 0987654321     
+ncc2      | SAMSUM                        | TPHCM          | 0978654321     
+ncc3      | VIVO                          | TPHCM          | 0987654312     
+ncc4      | asd                           | das            | 0987654321     
