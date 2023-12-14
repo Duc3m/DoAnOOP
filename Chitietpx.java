@@ -52,7 +52,7 @@ public class Chitietpx {
     }
 
     public String hienThongTinHoaDon(DanhSachSanPham lssanpham) {
-        String result = String.format("%-60s %-12s %-12s\n", "Ten San Pham", "SL", "gia (vnd)");
+        String result = String.format("%-60s %-12s %-12s\n", "Ten san pham", "SL", "Gia (vnd)");
         result += "-----------------------------------------------------------------------------------------\n";
         long total = 0;
         int tongSL = 0;
@@ -63,13 +63,13 @@ public class Chitietpx {
             Sanpham curr = lssanpham.getSanphamtheovt(vt);
             String ten = curr.getTen();
             int gia = curr.getGia();
-            total += gia * danhsachsanpham[i].soluong;
+            total += (long) gia * danhsachsanpham[i].soluong;
             String currLine = String.format("%-60s %-12d %-,12d\n", ten, danhsachsanpham[i].soluong, gia);
             result += currLine;
             tongSL++;
         }
         result += "-----------------------------------------------------------------------------------------\n";
-        String summarize = String.format("%-60s %-12d %-,12d\n", "total", tongSL, total);
+        String summarize = String.format("%-60s %-12d %-,12d\n", "Total", tongSL, total);
         result += summarize;
         return result;
     }

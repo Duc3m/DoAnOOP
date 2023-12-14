@@ -214,7 +214,7 @@ public class DanhSachSanPham {
                 char confirm = sc.nextLine().charAt(0);
                 if (confirm == 'y') {
                     for (int j = i; j < sanphamList.length - 1; j++)
-                        sanphamList[i] = sanphamList[j];
+                        sanphamList[j] = sanphamList[j+1];
                     sanphamList = Arrays.copyOf(sanphamList, soLoai - 1);
                     soLoai--;
                     System.out.println("Xoa san pham thanh cong!");
