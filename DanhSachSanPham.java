@@ -214,7 +214,7 @@ public class DanhSachSanPham {
                 char confirm = sc.nextLine().charAt(0);
                 if (confirm == 'y') {
                     for (int j = i; j < sanphamList.length - 1; j++)
-                        sanphamList[j] = sanphamList[j+1];
+                        sanphamList[j] = sanphamList[j + 1];
                     sanphamList = Arrays.copyOf(sanphamList, soLoai - 1);
                     soLoai--;
                     System.out.println("Xoa san pham thanh cong!");
@@ -256,6 +256,13 @@ public class DanhSachSanPham {
             }
         }
         return result;
+    }
+
+    public void muaSanPham(String id, int soluong) {
+        int vt = timSanPhamTheoId(id);
+        if (vt == -1)
+            return;
+        sanphamList[vt].setSoLuong((sanphamList[vt].soLuong - soluong));
     }
 
     public void suaSanPham(Scanner sc) {

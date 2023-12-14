@@ -230,7 +230,6 @@ public class dsphieuxuat {
                     break;
                 case "4":
                     suaSLSanPham(sc, currCTPX);
-                    ;
                     break;
                 case "5":
                     lSanPham.xuatSanPham(sc);
@@ -261,6 +260,7 @@ public class dsphieuxuat {
                     lschitietpx.themCtPx(currCTPX);
                     writeToFile();
                     lschitietpx.writeToFile();
+                    currCTPX.muaSanPham(lSanPham);
                     System.out.println("Don hang thanh cong bat dau in hoa don");
                     inHoaDon(currPx, currCTPX, lSanPham);
                     break;

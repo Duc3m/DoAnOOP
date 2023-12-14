@@ -66,7 +66,7 @@ public class Chitietpx {
             tongGia += (long) gia * danhsachsanpham[i].soluong;
             String currLine = String.format("%-60s %-12d %-,12d\n", ten, danhsachsanpham[i].soluong, gia);
             result += currLine;
-            tongSL++;
+            tongSL += danhsachsanpham[i].soluong;
         }
         result += "-----------------------------------------------------------------------------------------\n";
         String summarize = String.format("%-60s %-12d %-,12d\n", "Total", tongSL, tongGia);
@@ -158,6 +158,13 @@ public class Chitietpx {
         return countId;
     }
 
+
+    public void muaSanPham(DanhSachSanPham lssanpham) {
+        for (int i = 0; i < danhsachsanpham.length; i++) {
+            lssanpham.muaSanPham(danhsachsanpham[i].idsanpham, danhsachsanpham[i].soluong);
+        }
+    }
+      
     public void setTongGia(long tongGia) {
         this.tongGia = tongGia;
     }
