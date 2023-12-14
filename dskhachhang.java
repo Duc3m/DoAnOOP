@@ -88,7 +88,7 @@ public class dskhachhang {
             dskh[0] = new khachhang(123456789000L, "Duc", 3, 4, 2004, "0987654321", 'M');
             dskh[1] = new khachhang(123456789000L, "Duc Em", 3, 4, 2004, "0987654321", 'M');
             dskh[2] = new khachhang(123456789000L, "Dungdia", 3, 4, 2004, "0987654321", 'M');
-            dskh[3] = new khachhang(123456789000L, "Dead", 3, 4, 2004, "0987654321", 'M');
+            dskh[3] = new khachhang(123456789000L, "Dung", 3, 4, 2004, "0987654321", 'M');
             dskh[4] = new khachhang(123456789000L, "Phong", 3, 4, 2004, "0987654321", 'M');
             soluong = 5;
             writeToFile();
@@ -171,7 +171,7 @@ public class dskhachhang {
 
     public void xoaKH(Scanner sc) {
         if (dskh.length <= 0) {
-            System.out.println("danh sach khong con khach hang");
+            System.out.println("Danh sach khong con khach hang");
             return;
         }
         XuatKH();
@@ -209,7 +209,7 @@ public class dskhachhang {
 
     public void suaKH(Scanner sc) {
         if (dskh.length <= 0) {
-            System.out.println("khong co khach hang de sua");
+            System.out.println("Khong co khach hang de sua");
             return;
         }
         System.out.println();
@@ -229,12 +229,12 @@ public class dskhachhang {
         String option;
         do {
             System.out.println("========== Sua thong tin Khach Hang ==========");
-            System.out.println("1. cccd");
-            System.out.println("2. ten");
-            System.out.println("3. ngay sinh");
+            System.out.println("1. Can cuoc cong dan");
+            System.out.println("2. Ten");
+            System.out.println("3. Ngay sinh");
             // System.out.println("4. dia chi");
-            System.out.println("4. sdt");
-            System.out.println("5. gioi tinh");
+            System.out.println("4. Sdt");
+            System.out.println("5. Gioi tinh");
             System.out.println("Nhap x de tro lai");
             System.out.print("Chon thong tin ban muon sua: ");
             option = sc.nextLine();
@@ -331,11 +331,11 @@ public class dskhachhang {
         } while (!option.equals("x"));
     }
 
-    public static void main(String[] args) {
-        dskhachhang ds = new dskhachhang();
-        Scanner sc = new Scanner(System.in);
-        ds.readFile();
-        ds.mainMenu(sc);
-        ds.writeToFile();
-    }
+    // public static void main(String[] args) {
+    // dskhachhang ds = new dskhachhang();
+    // Scanner sc = new Scanner(System.in);
+    // ds.readFile();
+    // ds.mainMenu(sc);
+    // ds.writeToFile();
+    // }
 }

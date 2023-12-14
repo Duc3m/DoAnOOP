@@ -17,6 +17,8 @@ public class Chitietpx {
     private static int countId;
     private String id;
     private dssanpham[] danhsachsanpham;
+    private long tongGia;
+    private int tongSL;
     // private String idphieuxuat;
 
     public Chitietpx() {
@@ -54,8 +56,6 @@ public class Chitietpx {
     public String hienThongTinHoaDon(DanhSachSanPham lssanpham) {
         String result = String.format("%-60s %-12s %-12s\n", "Ten san pham", "SL", "Gia (vnd)");
         result += "-----------------------------------------------------------------------------------------\n";
-        long total = 0;
-        int tongSL = 0;
         for (int i = 0; i < danhsachsanpham.length; i++) {
             int vt = lssanpham.timSanPhamTheoId(danhsachsanpham[i].idsanpham);
             if (vt == -1)
@@ -63,13 +63,13 @@ public class Chitietpx {
             Sanpham curr = lssanpham.getSanphamtheovt(vt);
             String ten = curr.getTen();
             int gia = curr.getGia();
-            total += (long) gia * danhsachsanpham[i].soluong;
+            tongGia += (long) gia * danhsachsanpham[i].soluong;
             String currLine = String.format("%-60s %-12d %-,12d\n", ten, danhsachsanpham[i].soluong, gia);
             result += currLine;
             tongSL += danhsachsanpham[i].soluong;
         }
         result += "-----------------------------------------------------------------------------------------\n";
-        String summarize = String.format("%-60s %-12d %-,12d\n", "Total", tongSL, total);
+        String summarize = String.format("%-60s %-12d %-,12d\n", "Total", tongSL, tongGia);
         result += summarize;
         return result;
     }
@@ -158,10 +158,27 @@ public class Chitietpx {
         return countId;
     }
 
+
     public void muaSanPham(DanhSachSanPham lssanpham) {
         for (int i = 0; i < danhsachsanpham.length; i++) {
             lssanpham.muaSanPham(danhsachsanpham[i].idsanpham, danhsachsanpham[i].soluong);
         }
+    }
+      
+    public void setTongGia(long tongGia) {
+        this.tongGia = tongGia;
+    }
+
+    public long getTongGia() {
+        return tongGia;
+    }
+
+    public void setTongSL(int tongSL) {
+        this.tongSL = tongSL;
+    }
+
+    public int getTongSL() {
+        return tongSL;
     }
 
     @Override
