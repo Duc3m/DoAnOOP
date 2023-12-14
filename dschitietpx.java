@@ -84,13 +84,13 @@ public class dschitietpx {
         return result;
     }
 
-    public void readFile() {
+    public void readFile(DanhSachSanPham lSanPham) {
         soluong = readSl();
         if (soluong == -1) {
             System.out.println("Khong tim thay file phieu xuat, khoi tao mang co san");
             lsctpx = new Chitietpx[2];
-            lsctpx[0] = new Chitietpx("dt1,2 dt2,1 ");
-            lsctpx[1] = new Chitietpx("pk1,1 ");
+            lsctpx[0] = new Chitietpx("dt1,2 dt2,1 ", lSanPham);
+            lsctpx[1] = new Chitietpx("pk1,1 ", lSanPham);
             soluong++;
             return;
         }
@@ -101,7 +101,7 @@ public class dschitietpx {
             for (int i = 0; i < soluong; i++) {
                 String curr = sc.nextLine();
                 String[] currCTPX = curr.split("-");
-                lsctpx[i] = new Chitietpx(currCTPX[0], currCTPX[1]);
+                lsctpx[i] = new Chitietpx(currCTPX[0], currCTPX[1], lSanPham);
             }
             Chitietpx.setcountId(Integer.parseInt(lsctpx[lsctpx.length - 1].getId().replace("ctpx", "")));
             sc.close();
@@ -109,18 +109,22 @@ public class dschitietpx {
         }
     }
 
-    // public static void main(String[] args) {
-    // dschitietpx ls = new dschitietpx();
-    // // Chitietpx a = new Chitietpx("dt1,2 dt2,1 ");
-    // // // // a.themSanPham("dt1");
-    // // // // a.themSanPham("dt1");
-    // // // // a.themSanPham("dt2");
-    // // ls.themCtPx(a);
-    // // Chitietpx b = new Chitietpx();
-    // // b.themSanPham("pk1");
-    // // ls.themCtPx(b);
-    // ls.readFile();
-    // ls.xuatPx();
-    // ls.writeToFile();
-    // }
+    public void tongSoLuongDaMuaVaDoanhThu() {
+        int tongSoLuong = 0;
+        long doanhthu = 0;
+        for (Chitietpx i : lsctpx) {
+            tongSoLuong += i.getTongSL();
+            doanhthu += i.getTongGia();
+        }
+        System.out.printf("Tong so luong da ban: %,d\n", tongSoLuong);
+        System.out.printf("Tong so tien da ban duoc: %,d vnd\n", doanhthu);
+    }
+
+    public String tongSanPhamDaBan() {
+        String result = "";
+        for (Chitietpx i : lsctpx) {
+            result += i.getDanhsachsanpham();
+        }
+        return result;
+    }
 }
