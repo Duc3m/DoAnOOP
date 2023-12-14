@@ -1,6 +1,11 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class dskhachhang {
     private khachhang[] dskh;
@@ -15,7 +20,7 @@ public class dskhachhang {
     }
 
     public void Header() {
-        System.out.printf("%-5s| %-15s| %-15s| %-10s| %-11s| %-10s\n", "id", "cccd", "Ten",
+        System.out.printf("%-5s| %-15s| %-15s| %-10s| %-11s| %-10s\n", "Id", "CCCD", "Ten",
                 "Ngay sinh", "SDT", "Gioi tinh");
     }
 
@@ -26,11 +31,45 @@ public class dskhachhang {
         }
     }
 
+    public int readSl() {
+        int sl = 0;
+        Pattern header = Pattern.compile(
+                "Id\\s{3}\\| CCCD\\s{11}\\| Ten\\s{12}\\| Ngay sinh\\s{1}\\| SDT\\s{8}\\| Gioi tinh");
+        Pattern body = Pattern.compile(
+                "kh\\d{1,4}\\s{0,2}\\| \\d{12}\\s{1}\\| [a-zA-Z ]{1,20}\\s{0,16}\\| \\d{1,2}\\/\\d{1,2}\\/\\d{4}\\s{3}\\| 0\\d{9}\\s{1}\\| \\w{1}");
+        Matcher findmatch;
+        try {
+            BufferedReader fs = new BufferedReader(new FileReader("khachhang.txt"));
+            String currline = fs.readLine();
+            findmatch = header.matcher(currline);
+            if (!findmatch.find()) {
+                fs.close();
+                return -1;
+            }
+            while (currline != null) {
+                currline = fs.readLine();
+                if (currline == null)
+                    break;
+                findmatch = body.matcher(currline);
+                if (!findmatch.find()) {
+                    System.out.println(sl);
+                    fs.close();
+                    return -1;
+                }
+                sl++;
+            }
+            fs.close();
+        } catch (Exception e) {
+            return -1;
+        }
+        return sl;
+    }
+
     public void writeToFile() {
         try {
             FileWriter file = new FileWriter("Khachhang.txt");
             file.write(
-                    String.format("%-5s| %-15s| %-15s| %-10s| %-11s| %-10s\n", "id", "cccd", "Ten",
+                    String.format("%-5s| %-15s| %-15s| %-10s| %-11s| %-10s\n", "Id", "CCCD", "Ten",
                             "Ngay sinh", "SDT", "Gioi tinh"));
             for (khachhang i : dskh) {
                 file.write(i.toString());
@@ -38,6 +77,51 @@ public class dskhachhang {
             file.close();
         } catch (Exception e) {
             System.err.println(e);
+        }
+    }
+
+    public void readFile() {
+        this.soluong = readSl();
+        if (soluong == -1) {
+            System.out.println("Khong tim thay file hoac file bi loi! Bat dau khoi tao danh sach co san.");
+            dskh = new khachhang[5];
+            dskh[0] = new khachhang(123456789000L, "Duc", 3, 4, 2004, "0987654321", 'M');
+            dskh[1] = new khachhang(123456789000L, "Duc Em", 3, 4, 2004, "0987654321", 'M');
+            dskh[2] = new khachhang(123456789000L, "Dungdia", 3, 4, 2004, "0987654321", 'M');
+            dskh[3] = new khachhang(123456789000L, "Dead", 3, 4, 2004, "0987654321", 'M');
+            dskh[4] = new khachhang(123456789000L, "Phong", 3, 4, 2004, "0987654321", 'M');
+            soluong = 5;
+            writeToFile();
+            return;
+        }
+        try {
+            dskh = new khachhang[soluong];
+            Scanner sc = new Scanner(new File("khachhang.txt"));
+            sc.nextLine();
+            for (int i = 0; i < soluong; i++) {
+                String id = sc.next();
+                sc.next();// bo qua |
+                String cccd = sc.next();
+                sc.next();// bo qua |
+                String name = "";
+                while (sc.hasNext()) {
+                    String currLine = sc.next();
+                    if (currLine.equals("|")) {
+                        break;
+                    }
+                    name += currLine + " ";
+                }
+                String ngaysinh[] = new String[3];
+                ngaysinh = sc.next().split("\\/");
+                sc.next();// bo qua |
+                String sdt = sc.next();
+                sc.next();// bo qua |
+                char gender = sc.next().charAt(0);
+                dskh[i] = new khachhang(id, Long.parseLong(cccd), name, Integer.parseInt(ngaysinh[0]),
+                        Integer.parseInt(ngaysinh[1]), Integer.parseInt(ngaysinh[2]), sdt, gender);
+            }
+        } catch (Exception e) {
+
         }
     }
 
@@ -68,8 +152,9 @@ public class dskhachhang {
         System.out.print("Nhap gioi tinh khach hang moi M/F: ");
         char gender = checkPattern.checkgt(sc);
 
-        khachhang newKH = new khachhang(cccd, name, newday, newmonth, newyear, name, phone, gender);
+        khachhang newKH = new khachhang(cccd, name, newday, newmonth, newyear, phone, gender);
         themKH(newKH);
+        XuatKH();
         System.out.println("Da them thanh cong.");
 
     }
@@ -89,6 +174,7 @@ public class dskhachhang {
             System.out.println("danh sach khong con khach hang");
             return;
         }
+        XuatKH();
         System.out.println();
         System.out.print("Nhap id khach hang can xoa: ");
         String id = checkPattern.checkID(sc, dskh[0]);
@@ -108,6 +194,7 @@ public class dskhachhang {
             dskh = Arrays.copyOf(dskh, soluong - 1);
             soluong--;
             System.out.println();
+            XuatKH();
             System.out.println("Da xoa thanh cong.");
         }
     }
@@ -245,8 +332,10 @@ public class dskhachhang {
     }
 
     public static void main(String[] args) {
-    dskhachhang ds = new dskhachhang();
-    Scanner sc = new Scanner(System.in);
-    ds.mainMenu(sc);
+        dskhachhang ds = new dskhachhang();
+        Scanner sc = new Scanner(System.in);
+        ds.readFile();
+        ds.mainMenu(sc);
+        ds.writeToFile();
     }
 }
