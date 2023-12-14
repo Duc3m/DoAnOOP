@@ -1,38 +1,28 @@
-import java.util.Scanner;
-import java.util.Date;
 
 public class Baohanh {
     public static int countId;
     private String id;
-    private String spbaohanh;
-    private Date ngaybatdau;
-    private int thoigian;
-    private String idnguoimua; 
+    private String idphieuxuat;
+    private int thoigianbaohanh;
 
-    public Baohanh(){
+    public Baohanh() {
         countId++;
         this.id = "bh" + countId;
-        this.spbaohanh = "";
-        this.thoigian = 0;
-        this.idnguoimua = "";
-        ngaybatdau.setYear(ngaybatdau.getYear() + 1900);
+        idphieuxuat = "";
+        thoigianbaohanh = 0;
     }
 
-    public Baohanh(String spbaohanh, int thoigian, int ngay, int thang, int nam , String idnguoimua){
+    public Baohanh(String idphieuxuat, int thoigianbaohanh) {
         countId++;
-        this.id = "bh" + countId;
-        this.spbaohanh = spbaohanh;
-        this.thoigian = thoigian;
-        ngaybatdau = new Date(ngay, thang, nam);
-        this.idnguoimua = idnguoimua;
+        id = "bh" + countId;
+        this.idphieuxuat = idphieuxuat;
+        this.thoigianbaohanh = thoigianbaohanh;
     }
 
-    public Baohanh(String id, String spbaohanh, int thoigian, int ngay, int thang, int nam, String idnguoimua){
+    public Baohanh(String id, String idphieuxuat, int thoigianbaohanh) {
         this.id = id;
-        this.spbaohanh = spbaohanh;
-        this.thoigian = thoigian;
-        ngaybatdau = new Date(ngay, thang, nam);
-        this.idnguoimua=idnguoimua;
+        this.idphieuxuat = idphieuxuat;
+        this.thoigianbaohanh = thoigianbaohanh;
     }
 
     public String getId() {
@@ -43,56 +33,44 @@ public class Baohanh {
         this.id = id;
     }
 
-    public String getSpbaohanh() {
-        return this.spbaohanh;
+    public String getIdPhieuXuat() {
+        return idphieuxuat;
     }
 
-    public void setSpbaohanh(String spbaohanh) {
-        this.spbaohanh = spbaohanh;
+    public void setIdPhieuXuat(String id) {
+        this.id = id;
     }
 
-    public Date getNgaybatdau() {
-        return this.ngaybatdau;
+    public int getThoiGianBH() {
+        return thoigianbaohanh;
     }
 
-    public void setNgaybatdau(Date ngaybatdau) {
-        this.ngaybatdau = ngaybatdau;
+    public void setThoiGianBH(int thoigianbaohanh) {
+        this.thoigianbaohanh = thoigianbaohanh;
     }
 
-    public int getThoigian() {
-        return this.thoigian;
+    public static int getCountId() {
+        return Baohanh.countId;
     }
 
-    public void setThoigian(int thoigian) {
-        this.thoigian = thoigian;
+    public static void setcountId(int countId) {
+        Baohanh.countId = countId;
     }
 
-    public String getIdnguoimua() {
-        return this.idnguoimua;
-    }
-
-    public void setIdnguoimua(String idnguoimua) {
-        this.idnguoimua = idnguoimua;
-    }
-
-    public String getNgayBH(){
-        return ngaybatdau.getDate() + "/" + (ngaybatdau.getMonth() + 1) + "/" + ngaybatdau.getYear();
-    }
-
-    public String toString(){
-        return String.format("%-15s| %-15s| %-15s| %-15s| %-15s\n", id,spbaohanh, thoigian, getNgayBH(), idnguoimua );
+    @Override
+    public String toString() {
+        return String.format("%-15s| %-15s| %-15d\n", id, idphieuxuat, thoigianbaohanh);
     }
 
     // public void input(Scanner sc){
-    //     System.out.printf("Nhap id bao hanh: ");
-    //     id = sc.nextLine();
-    //     System.out.printf("\nNhap vao san pham can bao hanh ");
-    //     spbaohanh = sc.nextLine();
-    //     System.out.printf("\nNhap vao id nguoi mua hang ");
-    //     idnguoimua = sc.nextLine();
-        
-    //     System.out.print("\nNhap vao thoi gian bao hanh ");
-    
+    // System.out.printf("Nhap id bao hanh: ");
+    // id = sc.nextLine();
+    // System.out.printf("\nNhap vao san pham can bao hanh ");
+    // spbaohanh = sc.nextLine();
+    // System.out.printf("\nNhap vao id nguoi mua hang ");
+    // idnguoimua = sc.nextLine();
+
+    // System.out.print("\nNhap vao thoi gian bao hanh ");
 
     // }
 }

@@ -1,0 +1,3 @@
+id             | Phieu Xuat     | Thoi Gian BH   
+bh1            | px1            | 12             
+bh2            | px2            | 12             
