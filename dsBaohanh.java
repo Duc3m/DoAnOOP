@@ -38,13 +38,13 @@ public class dsBaohanh {
         System.out.printf("%-15s| %-15s| %-15s| %-15s| %-15s\n", "id", "Spbaohanh", "ngaybatdau", "thoigian",
         "idnguoimua");
         for (Baohanh i : lsbaBaohanhs) {
-            System.out.println(i);
+            System.out.print(i);
         }
     }
     public static void main(String[] args) {
     dsBaohanh ls = new dsBaohanh();
-    Baohanh a = new Baohanh("123","Iphone 16", 12, "kh1", 12, 5, 2023);
-    Baohanh b = new Baohanh("124","Airpod 4", 24, "kh2", 13, 5, 2023);
+    Baohanh a = new Baohanh("123","Iphone 16", 12, 12, 5, 2023, "kh1");
+    Baohanh b = new Baohanh("124","Airpod 4", 24, 13, 5, 2023, "kh2");
     ls.addBH(a);
     ls.addBH(b);
     ls.xuatBH();

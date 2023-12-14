@@ -18,19 +18,21 @@ public class Baohanh {
         ngaybatdau.setYear(ngaybatdau.getYear() + 1900);
     }
 
-    public Baohanh(String spbaohanh, int thoigian, String idnguoimua, int ngay, int thang, int nam){
+    public Baohanh(String spbaohanh, int thoigian, int ngay, int thang, int nam , String idnguoimua){
         countId++;
         this.id = "bh" + countId;
         this.spbaohanh = spbaohanh;
         this.thoigian = thoigian;
         ngaybatdau = new Date(ngay, thang, nam);
+        this.idnguoimua = idnguoimua;
     }
 
-    public Baohanh(String id, String spbaohanh, int thoigian, String idnguoimua, int ngay, int thang, int nam){
+    public Baohanh(String id, String spbaohanh, int thoigian, int ngay, int thang, int nam, String idnguoimua){
         this.id = id;
         this.spbaohanh = spbaohanh;
         this.thoigian = thoigian;
         ngaybatdau = new Date(ngay, thang, nam);
+        this.idnguoimua=idnguoimua;
     }
 
     public String getId() {
@@ -71,6 +73,14 @@ public class Baohanh {
 
     public void setIdnguoimua(String idnguoimua) {
         this.idnguoimua = idnguoimua;
+    }
+
+    public String getNgayBH(){
+        return ngaybatdau.getDate() + "/" + (ngaybatdau.getMonth() + 1) + "/" + ngaybatdau.getYear();
+    }
+
+    public String toString(){
+        return String.format("%-15s| %-15s| %-15s| %-15s| %-15s\n", id,spbaohanh, thoigian, getNgayBH(), idnguoimua );
     }
 
     // public void input(Scanner sc){
