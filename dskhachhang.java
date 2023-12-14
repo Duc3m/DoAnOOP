@@ -318,7 +318,6 @@ public class dskhachhang {
             switch (option) {
                 case "1":
                     XuatKH();
-                    System.out.println(readSl());
                     break;
                 case "2":
                     themKHmoi(sc);
