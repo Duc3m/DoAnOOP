@@ -30,8 +30,8 @@ public class Main {
             System.out.println("1. Lam viec voi tai khoan");
             System.out.println("2. Lam viec voi nhan vien");
             System.out.println("3. Lam viec voi san pham");
-            System.out.println("4. Lam viec voi nha cung cap");
-            System.out.println("5. Lam viec voi khach hang");
+            System.out.println("4. Lam viec voi khach hang");
+            System.out.println("5. Lam viec voi thong ke");
             System.out.println("6. Tinh luong thang nay se nhan");
             System.out.println("x. De dang xuat");
             System.out.print("Thao tac ban muon thuc hien: ");
@@ -47,7 +47,7 @@ public class Main {
                     lssanpham.mainMenu(sc, curruser, lsphieuxuat, lschitietpx);
                     break;
                 case "4":
-                    System.out.println("menu khach hang");
+                    lskh.mainMenu(sc);
                     break;
                 case "5":
                     System.out.println("tinh luong");

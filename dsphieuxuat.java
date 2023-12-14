@@ -129,7 +129,7 @@ public class dsphieuxuat {
     }
 
     public void themSanPhamVaoHoaDon(Scanner sc, DanhSachSanPham lSanPham, Chitietpx ctpx) {
-        System.out.println("nhap id san pham ban muon them");
+        System.out.print("Nhap id san pham ban muon them: ");
         String id = sc.nextLine();
         int vt = lSanPham.timSanPhamTheoId(id);
         if (vt == -1) {
@@ -216,6 +216,7 @@ public class dsphieuxuat {
             System.out.println("8. Them khach hang moi");
             System.out.println("n. huy don hang");
             System.out.println("y. xac nhan don hang");
+            System.out.print("Nhap lua chon cua ban: ");
             option = sc.nextLine();
             switch (option) {
                 case "1":
@@ -248,7 +249,7 @@ public class dsphieuxuat {
                     currPx = null;
                     Chitietpx.setcountId((Chitietpx.getCountId() - 1));
                     Phieuxuat.setcountId((Phieuxuat.getcountId() - 1));
-                    System.out.println("huy don hang thanh cong");
+                    System.out.println("Huy don hang thanh cong");
                     break;
                 case "y":
                     if (currCTPX.getDanhsachsanpham().equals("")) {
@@ -260,7 +261,7 @@ public class dsphieuxuat {
                     lschitietpx.themCtPx(currCTPX);
                     writeToFile();
                     lschitietpx.writeToFile();
-                    System.out.println("don hang thanh cong bat dau in hoa don");
+                    System.out.println("Don hang thanh cong bat dau in hoa don");
                     inHoaDon(currPx, currCTPX, lSanPham);
                     break;
                 default:
