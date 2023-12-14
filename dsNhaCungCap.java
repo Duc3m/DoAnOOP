@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
-import java.util.*;
 
 public class dsNhaCungCap {
     private nhacungcap[] dsncc;
@@ -99,7 +98,7 @@ public class dsNhaCungCap {
             sc.nextLine();
             for (int i = 0; i < soluong; i++) {
                 String id = sc.next();
-                sc.next();//bo qua "|"
+                sc.next();// bo qua "|"
                 String name = "";
                 while (sc.hasNext()) {
                     String currLine1 = sc.next();
@@ -117,7 +116,7 @@ public class dsNhaCungCap {
                     address += currLine2 + " ";
                 }
                 String phoneNumber = sc.next();
-                dsncc[i]=new nhacungcap(id,name, address, phoneNumber);
+                dsncc[i] = new nhacungcap(id, name, address, phoneNumber);
             }
         } catch (Exception e) {
 
