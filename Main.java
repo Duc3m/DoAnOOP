@@ -21,6 +21,30 @@ public class Main {
         return ls.checkAccount(tk, mk);
     }
 
+    private static void thongKeMenu(Scanner sc) {
+        String choice = null;
+        do {
+            System.out.println("\n========== Thong Ke ==========");
+            lschitietpx.tongSoLuongDaMuaVaDoanhThu();
+            System.out.println("1. Thong ke theo san pham");
+            System.out.println("x. De thoat");
+            choice = sc.nextLine();
+            switch (choice) {
+                case "1":
+                    Chitietpx newCtpx = new Chitietpx("", lschitietpx.tongSanPhamDaBan());
+                    System.out.println(newCtpx.hienThongTinHoaDon(lssanpham));
+                    System.out.println("Nhap nut bat ky de tiep tuc...");
+                    sc.nextLine();
+                    newCtpx = null;
+                    break;
+
+                default:
+                    System.out.println("Khong hop le vui long nhap lai");
+                    break;
+            }
+        } while (!choice.equals("x"));
+    }
+
     private static void loginMenu(Scanner sc) {
         String choice = null;
         do {
@@ -32,7 +56,6 @@ public class Main {
             System.out.println("3. Lam viec voi san pham");
             System.out.println("4. Lam viec voi khach hang");
             System.out.println("5. Lam viec voi thong ke");
-            System.out.println("6. Tinh luong thang nay se nhan");
             System.out.println("x. De dang xuat");
             System.out.print("Thao tac ban muon thuc hien: ");
             choice = sc.nextLine();
@@ -50,7 +73,7 @@ public class Main {
                     lskh.mainMenu(sc);
                     break;
                 case "5":
-                    System.out.println("tinh luong");
+                    thongKeMenu(sc);
                     break;
                 case "x":
                     System.out.println("Da dang xuat");
@@ -69,7 +92,7 @@ public class Main {
         lsacc.readFile();
         lssanpham.readFile();
         lsphieuxuat.readFile();
-        lschitietpx.readFile();
+        lschitietpx.readFile(lssanpham);
         while (isrunning) {
             if (curruser == null) {
                 String choice;

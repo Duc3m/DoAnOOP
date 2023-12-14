@@ -34,7 +34,7 @@ public class Chitietpx {
 
     // }
 
-    public Chitietpx(String lssanpham) {
+    public Chitietpx(String lssanpham, DanhSachSanPham lSachSanPham) {
         countId++;
         this.id = "ctpx" + countId;
         String[] stringdssanpham = lssanpham.split("\\s");
@@ -42,6 +42,17 @@ public class Chitietpx {
             String[] sanpham = i.split(",");
             themSanPham(sanpham[0], Integer.parseInt(sanpham[1]));
         }
+        getThongTinTongGiaVoiTongSoLuong(lSachSanPham);
+    }
+
+    public Chitietpx(String id, String lssanpham, DanhSachSanPham lSachSanPham) {
+        this.id = id;
+        String[] stringdssanpham = lssanpham.split("\\s");
+        for (String i : stringdssanpham) {
+            String[] sanpham = i.split(",");
+            themSanPham(sanpham[0], Integer.parseInt(sanpham[1]));
+        }
+        getThongTinTongGiaVoiTongSoLuong(lSachSanPham);
     }
 
     public Chitietpx(String id, String lssanpham) {
@@ -50,6 +61,18 @@ public class Chitietpx {
         for (String i : stringdssanpham) {
             String[] sanpham = i.split(",");
             themSanPham(sanpham[0], Integer.parseInt(sanpham[1]));
+        }
+    }
+
+    public void getThongTinTongGiaVoiTongSoLuong(DanhSachSanPham lSanPham) {
+        for (int i = 0; i < danhsachsanpham.length; i++) {
+            int vt = lSanPham.timSanPhamTheoId(danhsachsanpham[i].idsanpham);
+            if (vt == -1)
+                continue;
+            Sanpham curr = lSanPham.getSanphamtheovt(vt);
+            int gia = curr.getGia();
+            tongGia += (long) gia * danhsachsanpham[i].soluong;
+            tongSL += danhsachsanpham[i].soluong;
         }
     }
 
@@ -158,13 +181,12 @@ public class Chitietpx {
         return countId;
     }
 
-
     public void muaSanPham(DanhSachSanPham lssanpham) {
         for (int i = 0; i < danhsachsanpham.length; i++) {
             lssanpham.muaSanPham(danhsachsanpham[i].idsanpham, danhsachsanpham[i].soluong);
         }
     }
-      
+
     public void setTongGia(long tongGia) {
         this.tongGia = tongGia;
     }

@@ -261,6 +261,7 @@ public class dsphieuxuat {
                     writeToFile();
                     lschitietpx.writeToFile();
                     currCTPX.muaSanPham(lSanPham);
+                    lSanPham.writeToFile();
                     System.out.println("Don hang thanh cong bat dau in hoa don");
                     inHoaDon(currPx, currCTPX, lSanPham);
                     break;
