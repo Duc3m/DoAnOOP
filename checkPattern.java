@@ -133,7 +133,7 @@ public class checkPattern {
                 if (result > 0 && result <= 31)
                     return result;
             }
-            System.out.print("phai la so 1-31, vui long nhap lai: ");
+            System.out.print("Phai la so 1-31, vui long nhap lai: ");
         } while (true);
     }
 
@@ -148,7 +148,7 @@ public class checkPattern {
                 if (result > 0 && result <= 12)
                     return result;
             }
-            System.out.print("phai la so tu 1-12, vui long nhap lai: ");
+            System.out.print("Phai la so tu 1-12, vui long nhap lai: ");
         } while (true);
     }
 }
