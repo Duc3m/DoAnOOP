@@ -107,8 +107,7 @@ public class account implements permission {
             System.out.println();
             showInfo();
             System.out.println();
-            System.out.println("-----------------------------------------------------------------");
-            System.out.println("Chon thao tac ban muon lam");
+            System.out.println("========== Menu Account ==========");
             System.out.println("1. Neu ban muon doi mat khau");
             if (type.equals("QL")) {
                 System.out.println("2. De xoa tai khoan");
@@ -116,10 +115,11 @@ public class account implements permission {
                 System.out.println("4. Hien danh sach tai khoan");
             }
             System.out.println("x. De tro lai");
+            System.out.print("Chon thao tac ban muon lam: ");
             choise = sc.nextLine();
             switch (choise) {
                 case "1":
-                    System.out.print("nhap mat khau cu: ");
+                    System.out.print("Nhap mat khau cu: ");
                     String prevPass = sc.nextLine();
                     if (!password.equals(prevPass)) {
                         System.out.println("Khong dung mat khau vui long nhap lai");
@@ -128,16 +128,16 @@ public class account implements permission {
                     String newPassword = null;
                     String confirmPassword = null;
                     do {
-                        System.out.print("nhap mat khau moi: ");
+                        System.out.print("Nhap mat khau moi: ");
                         newPassword = sc.next();
                         sc.nextLine();
-                        System.out.print("nhap lai mat khau moi: ");
+                        System.out.print("Nhap lai mat khau moi: ");
                         confirmPassword = sc.next();
                         sc.nextLine();
                         if (!newPassword.equals(confirmPassword))
-                            System.out.println("vui long nhap ca hai giong nhau");
+                            System.out.println("Vui long nhap ca hai giong nhau");
                         if (newPassword.length() >= 30 || newPassword.length() <= 4)
-                            System.out.println("mat khau can chi tu 4-30 ky tu");
+                            System.out.println("Mat khau can chi tu 4-30 ky tu");
                     } while (!newPassword.equals(confirmPassword) || newPassword.length() >= 30
                             || newPassword.length() <= 4);
                     setPassword(newPassword);
@@ -145,7 +145,7 @@ public class account implements permission {
                     break;
                 case "2":
                     if (!xoataikhoan()) {
-                        System.out.println("khong hop le vui long nhap lai");
+                        System.out.println("Khong hop le vui long nhap lai");
                         break;
                     }
                     do {
@@ -180,13 +180,13 @@ public class account implements permission {
                     break;
                 case "3":
                     if (!themtaikhoan()) {
-                        System.out.println("khong hop le vui long nhap lai");
+                        System.out.println("Khong hop le vui long nhap lai");
                         break;
                     }
                     System.out.println("Khoi tao tai khoan nhan vien moi mac dinh");
                     account newacc = new account();
                     ls.themTaiKhoan(newacc);
-                    System.out.println("thong tin tai khoan moi: ");
+                    System.out.println("Thong tin tai khoan moi: ");
                     newacc.showInfo();
                     System.out.println("Password: " + newacc.getPassword());
                     System.out.print("Bam nut bat ky de tiep tuc....");
@@ -245,6 +245,24 @@ public class account implements permission {
     }
 
     public boolean suaSanPham() {
+        if (type.equals("QL"))
+            return true;
+        return false;
+    }
+
+    public boolean themNhanVien() {
+        if (type.equals("QL"))
+            return true;
+        return false;
+    }
+
+    public boolean xoaNhanVien() {
+        if (type.equals("QL"))
+            return true;
+        return false;
+    }
+
+    public boolean suaNhanvien() {
         if (type.equals("QL"))
             return true;
         return false;

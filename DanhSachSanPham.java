@@ -182,7 +182,7 @@ public class DanhSachSanPham {
         System.out.print("Nhap so luong san pham moi: ");
         int amount = checkPattern.checkInt(sc);
 
-        System.out.print("Nhap nha cung cap san pham moi: ");
+        System.out.print("Nhap id nha cung cap san pham moi: ");
         String ncc = sc.nextLine();
 
         System.out.println("Chon loai: ");
@@ -194,23 +194,43 @@ public class DanhSachSanPham {
                 Dienthoai newSp1 = new Dienthoai(name, price, amount, ncc);
                 themSanPham(newSp1);
                 System.out.println("San pham da duoc them thanh cong");
+                writeToFile();
                 break;
             case '2':
                 Phukien newSp2 = new Phukien(name, price, amount, ncc);
                 themSanPham(newSp2);
                 System.out.println("San pham da duoc them thanh cong");
+                writeToFile();
                 break;
             default:
-                break;
+                System.out.println("Khong hop le");
         }
     }
 
-    public void xoaSanPham(String id) {
+    public void xoaSanPham(String id, Scanner sc) {
         for (int i = 0; i < soLoai; i++)
-            if (sanphamList[i].getId().equals(id))
-                for (int j = i; i < sanphamList.length - 1; j++)
-                    sanphamList[i] = sanphamList[j];
-        soLoai--;
+            if (sanphamList[i].getId().equals(id)) {
+                System.out.print("Ban co chan chac muon xoa san pham nay? (y/n): ");
+                char confirm = sc.nextLine().charAt(0);
+                if (confirm == 'y') {
+                    for (int j = i; j < sanphamList.length - 1; j++)
+                        sanphamList[i] = sanphamList[j];
+                    sanphamList = Arrays.copyOf(sanphamList, soLoai - 1);
+                    soLoai--;
+                    System.out.println("Xoa san pham thanh cong!");
+                    writeToFile();
+                    return;
+                }
+                if (confirm == 'n')
+                    return;
+            }
+        System.out.print("\nKhong tim thay id");
+    }
+
+    public void xoaSanPham(Scanner sc) {
+        System.out.print("Nhap ID cua san pham can xoa: ");
+        String id = checkPattern.checkIdSP(sc);
+        xoaSanPham(id, sc);
     }
 
     public int timSanPhamTheoId(String id) {
@@ -356,6 +376,7 @@ public class DanhSachSanPham {
                         System.out.println("khong hop le vui long nhap lai");
                         break;
                     }
+                    xoaSanPham(sc);
                     break;
                 case "5":
                     if (!curruser.suaSanPham()) {

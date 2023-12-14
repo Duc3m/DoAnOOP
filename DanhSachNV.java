@@ -332,7 +332,7 @@ public class DanhSachNV {
             dsnv[2] = new nvbanhang(121233123312L, "Truong Minh Thu", "0123312325", 'F', 5, 9, 1999, 9000000, 1.0,
                     "nhan vien", "",
                     2.0, 17, 1, 2021);
-            dsnv[3] = new nvbanhang(231232323312L, "Tran Duc Em", "0123123225", 'M', 28, 2, 2000, 9000000, 1.0,
+            dsnv[3] = new nvbanhang(231232323312L, "Doan Minh Duc", "0123123225", 'M', 28, 2, 2000, 9000000, 1.0,
                     "nhan vien", "",
                     5.0, 2, 12, 2022);
             soluong = 4;
@@ -384,15 +384,17 @@ public class DanhSachNV {
         }
     }
 
-    public void mainMenu(Scanner sc) {
+    public void mainMenu(Scanner sc, account curruser) {
         String option;
         do {
             System.out.println();
             System.out.println("========== Menu Nhan Vien ==========");
             System.out.println("1. Hien danh sach nhan vien hien tai");
-            System.out.println("2. Them nhan vien moi");
-            System.out.println("3. Xoa nhan vien");
-            System.out.println("4. Sua thong tin nhan vien");
+            if (curruser.getType().equals("QL")) {
+                System.out.println("2. Them nhan vien moi");
+                System.out.println("3. Xoa nhan vien");
+                System.out.println("4. Sua thong tin nhan vien");
+            }
             System.out.println("Nhap x de tro lai");
             System.out.print("Chon thao tac ban muon lam: ");
             option = sc.nextLine();
@@ -402,6 +404,10 @@ public class DanhSachNV {
                     xuatNhanVien();
                     break;
                 case "2":
+                    if (!curruser.themNhanVien()) {
+                        System.out.println("khong hop le vui long nhap lai");
+                        break;
+                    }
                     System.out.print("Nhap so luong nhan vien can them: ");
                     int n = checkPattern.checkInt(sc);
                     for (int i = 0; i < n; i++) {
@@ -411,9 +417,17 @@ public class DanhSachNV {
                     }
                     break;
                 case "3":
+                    if (!curruser.xoaNhanVien()) {
+                        System.out.println("khong hop le vui long nhap lai");
+                        break;
+                    }
                     deleteNV(sc);
                     break;
                 case "4":
+                    if (!curruser.suaNhanvien()) {
+                        System.out.println("khong hop le vui long nhap lai");
+                        break;
+                    }
                     EditNV(sc);
                     break;
                 default:
@@ -422,12 +436,12 @@ public class DanhSachNV {
         } while (!option.equals("x"));
     }
 
-    public static void main(String[] args) {
-    DanhSachNV list = new DanhSachNV();
-    Scanner sc = new Scanner(System.in);
+    // public static void main(String[] args) {
+    // DanhSachNV list = new DanhSachNV();
+    // Scanner sc = new Scanner(System.in);
     // list.readFile();
-    list.mainMenu(sc);
+    // list.mainMenu(sc);
     // list.xuatNhanVien();
     // list.writeToFile();
-    }
+    // }
 }
