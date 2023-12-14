@@ -141,9 +141,9 @@ public class dskhachhang {
 
         System.out.println("Nhap ngay sinh khach hang moi");
         System.out.print("Nhap ngay sinh: ");
-        int newday = checkPattern.checkNgayThang(sc);
+        int newday = checkPattern.checkNgay(sc);
         System.out.print("Nhap thang sinh: ");
-        int newmonth = checkPattern.checkNgayThang(sc);
+        int newmonth = checkPattern.checkThang(sc);
         System.out.print("Nhap nam sinh: ");
         int newyear = checkPattern.checkNam(sc);
 
@@ -261,9 +261,9 @@ public class dskhachhang {
                     System.out.println();
                     System.out.println("Nhap lai ngay sinh khach hang.");
                     System.out.print("Nhap ngay sinh: ");
-                    int newDay = checkPattern.checkNgayThang(sc);
+                    int newDay = checkPattern.checkNgay(sc);
                     System.out.print("Nhap thang sinh: ");
-                    int newMonth = checkPattern.checkNgayThang(sc);
+                    int newMonth = checkPattern.checkThang(sc);
                     System.out.print("Nhap nam sinh: ");
                     int newYear = checkPattern.checkNam(sc);
                     dskh[index].setBirthday(newYear, newMonth, newDay);

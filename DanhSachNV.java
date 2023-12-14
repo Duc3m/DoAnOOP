@@ -113,9 +113,9 @@ public class DanhSachNV {
                 case "2":
                     System.out.println();
                     System.out.print("Nhap ngay sinh moi cua nhan vien: ");
-                    int newDay = checkPattern.checkNgayThang(sc);
+                    int newDay = checkPattern.checkNgay(sc);
                     System.out.print("Nhap thang sinh moi cua nhan vien: ");
-                    int newMonth = checkPattern.checkNgayThang(sc);
+                    int newMonth = checkPattern.checkThang(sc);
                     System.out.print("Nhap nam sinh moi cua nhan vien: ");
                     int newYear = checkPattern.checkNam(sc);
                     dsnv[index].setBirthday(newYear, newMonth, newDay);
@@ -262,9 +262,9 @@ public class DanhSachNV {
         long newCccd = checkPattern.checkcccd(sc);
 
         System.out.print("Nhap ngay sinh cua nhan vien: ");
-        int newBirthDay = checkPattern.checkNgayThang(sc);
+        int newBirthDay = checkPattern.checkNgay(sc);
         System.out.print("Nhap thang sinh cua nhan vien: ");
-        int newBirthMonth = checkPattern.checkNgayThang(sc);
+        int newBirthMonth = checkPattern.checkThang(sc);
         System.out.print("Nhap nam sinh cua nhan vien: ");
         int newBirthYear = checkPattern.checkNam(sc);
 

@@ -31,20 +31,6 @@ public class checkPattern {
         } while (true);
     }
 
-    public static int checkNgayThang(Scanner sc) {
-        int result;
-        Pattern intPattern = Pattern.compile("^\\d{1,2}$");
-        do {
-            String temp = sc.nextLine();
-            Matcher findMatch = intPattern.matcher(temp);
-            if (findMatch.find()) {
-                result = Integer.parseInt(temp);
-                return result;
-            }
-            System.out.print("phai co 1-2 so, vui long nhap lai: ");
-        } while (true);
-    }
-
     public static int checkNam(Scanner sc) {
         int result;
         Pattern intPattern = Pattern.compile("^\\d{4}$");
@@ -136,4 +122,33 @@ public class checkPattern {
         } while (true);
     }
 
+    public static int checkNgay(Scanner sc) {
+        int result;
+        Pattern intPattern = Pattern.compile("^\\d{1,2}$");
+        do {
+            String temp = sc.nextLine();
+            Matcher findMatch = intPattern.matcher(temp);
+            if (findMatch.find()) {
+                result = Integer.parseInt(temp);
+                if (result > 0 && result <= 31)
+                    return result;
+            }
+            System.out.print("Phai la so 1-31, vui long nhap lai: ");
+        } while (true);
+    }
+
+    public static int checkThang(Scanner sc) {
+        int result;
+        Pattern intPattern = Pattern.compile("^\\d{1,2}$");
+        do {
+            String temp = sc.nextLine();
+            Matcher findMatch = intPattern.matcher(temp);
+            if (findMatch.find()) {
+                result = Integer.parseInt(temp);
+                if (result > 0 && result <= 12)
+                    return result;
+            }
+            System.out.print("Phai la so tu 1-12, vui long nhap lai: ");
+        } while (true);
+    }
 }
