@@ -52,7 +52,7 @@ public class Chitietpx {
     }
 
     public String hienThongTinHoaDon(DanhSachSanPham lssanpham) {
-        String result = String.format("%-60s %-12s %-12s\n", "Ten san pham", "SL", "Tia (vnd)");
+        String result = String.format("%-60s %-12s %-12s\n", "Ten san pham", "SL", "Gia (vnd)");
         result += "-----------------------------------------------------------------------------------------\n";
         long total = 0;
         int tongSL = 0;
