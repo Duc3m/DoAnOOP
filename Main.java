@@ -91,8 +91,10 @@ public class Main {
         boolean isrunning = true;
         lsacc.readFile();
         lssanpham.readFile();
+        lsnhanvien.readFile();
         lsphieuxuat.readFile();
         lschitietpx.readFile(lssanpham);
+        lskh.readFile();
         while (isrunning) {
             if (curruser == null) {
                 String choice;

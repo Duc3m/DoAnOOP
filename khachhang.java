@@ -26,6 +26,10 @@ public class khachhang extends mortals {
         return this.id;
     }
 
+    public static void setCountId(int countId) {
+        khachhang.countId = countId;
+    }
+
     @Override
     public String toString() {
         return String.format("%-5s| %-15s| %-15s| %-10s| %-11s| %-10s\n", id, cccd, name,

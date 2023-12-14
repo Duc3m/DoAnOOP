@@ -1,3 +1,0 @@
-id        | userName                      | password                      | type      | ngaytao        
-a1        | admin                         | admin                         | QL        | 24/11/2023     
-a2        | nhanviena1                    | 123456                        | NV        | 24/11/2023     
