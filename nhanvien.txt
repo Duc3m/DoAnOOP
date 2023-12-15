@@ -1,0 +1,5 @@
+id   | CCCD         | Ten                 | Ngay sinh  | SDT        | Gioi tinh | Luong co ban | He so luong | SGTC/HSTN | Chuc vu   | Ngay BDLV 
+nv1  | 231231232333 | Tran Dai Van        | 20/10/2004 | 0902522842 | M         | 9000000      | 1.0         | 4.0       | nhan vien | 12/7/2021 
+nv2  | 123231233312 | Nguyen Dai Nghia    | 12/4/1999  | 0902512332 | M         | 9000000      | 1.0         | 1.0       | nhan vien | 3/5/2022  
+nv3  | 121233123312 | Truong Minh Thu     | 5/9/1999   | 0123312325 | F         | 9000000      | 1.0         | 2.0       | nhan vien | 17/1/2021 
+nv4  | 231232323312 | Doan Minh Duc       | 28/2/2000  | 0123123225 | M         | 9000000      | 1.0         | 5.0       | nhan vien | 2/12/2022 

@@ -9,11 +9,11 @@ public class checkPattern {
         do {
             String temp = sc.nextLine();
             Matcher findMatch = intPattern.matcher(temp);
-            if (findMatch.find()) {
+            if (findMatch.find() && Long.parseLong(temp) <= Integer.MAX_VALUE && Long.parseLong(temp) > 0) {
                 result = Integer.parseInt(temp);
                 return result;
             }
-            System.out.print("phai la so, vui long nhap lai: ");
+            System.out.print("Phai la so duong, va <= 2147483647, vui long nhap lai: ");
         } while (true);
     }
 

@@ -1,0 +1,3 @@
+id             | idkhachang     | idChiTietPx    | ngay ban       | idnguoiban     
+px1            | kh1            | ctpx1          | 12/5/2023      | nv1            
+px2            | kh1            | ctpx2          | 10/12/2019     | nv1            
