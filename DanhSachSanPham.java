@@ -78,8 +78,8 @@ public class DanhSachSanPham {
         if (soLoai == -1) {
             System.out.println("Khong tim thay file hoac file bi loi, bat dau khoi tao mang co san");
             sanphamList = new Sanpham[4];
-            sanphamList[0] = new Dienthoai("Iphone 15 pro max", 34990000, 1000, "ncc1");
-            sanphamList[1] = new Dienthoai("Samsumg Galaxy S23 ultra", 31990000, 1000, "ncc2");
+            sanphamList[0] = new Dienthoai("Iphone 15 Pro Max", 34990000, 1000, "ncc1");
+            sanphamList[1] = new Dienthoai("Samsumg Galaxy S23 Ultra", 31990000, 1000, "ncc2");
             sanphamList[2] = new Phukien("AirPods Pro 2 2023 USB-C", 6190000, 1000, "ncc1");
             sanphamList[3] = new Phukien("Cu sac Samsung Type-C 45W", 1190000, 1000, "ncc2");
             soLoai = 4;
@@ -258,6 +258,17 @@ public class DanhSachSanPham {
         return result;
     }
 
+    public void timSanPham(Scanner sc) {
+        System.out.print("\nNhap ten san pham ban muon tim: ");
+        String name = sc.nextLine();
+
+        for (Sanpham i : sanphamList) {
+            if (i.getTen().toLowerCase().contains(name.toLowerCase())) {
+                System.out.print(i);
+            }
+        }
+    }
+
     public void muaSanPham(String id, int soluong) {
         int vt = timSanPhamTheoId(id);
         if (vt == -1)
@@ -347,7 +358,8 @@ public class DanhSachSanPham {
     // return currPx;
     // }
 
-    public void mainMenu(Scanner sc, account curruser, dsphieuxuat lspx, dschitietpx lDschitietpx) {
+    public void mainMenu(Scanner sc, account curruser, dsphieuxuat lspx, dschitietpx lDschitietpx,
+            dsBaohanh lDsBaohanh) {
         String option;
         // String currPX = null;
         do {
@@ -360,6 +372,7 @@ public class DanhSachSanPham {
                 System.out.println("4. Xoa san pham");
                 System.out.println("5. Sua thong tin san pham");
             }
+            System.out.println("6. Tim san pham theo ten");
             System.out.println("Nhap x de tro lai");
             System.out.print("Chon thao tac ban muon lam: ");
             option = sc.nextLine();
@@ -369,14 +382,20 @@ public class DanhSachSanPham {
                     xuatSanPham(sc);
                     break;
                 case "2":
-                    lspx.menupx(sc, this, lDschitietpx);
+                    lspx.menupx(sc, this, lDschitietpx, lDsBaohanh);
                     break;
                 case "3":
                     if (!curruser.themSanPham()) {
                         System.out.println("khong hop le vui long nhap lai");
                         break;
                     }
-                    themSanPhamMoi(sc);
+                    System.out.print("Nhap so luong san pham muon them: ");
+                    int n = checkPattern.checkInt(sc);
+                    for (int i = 0; i < n; i++) {
+                        System.out.println("\n==========================================");
+                        System.out.println("San pham thu " + (i + 1));
+                        themSanPhamMoi(sc);
+                    }
                     break;
                 case "4":
                     if (!curruser.xoaSanPham()) {
@@ -391,6 +410,9 @@ public class DanhSachSanPham {
                         break;
                     }
                     suaSanPham(sc);
+                    break;
+                case "6":
+                    timSanPham(sc);
                     break;
                 default:
                     System.out.println("khong hop le vui long nhap lai");

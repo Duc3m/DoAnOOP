@@ -7,7 +7,7 @@ public class Main {
     private static dsphieuxuat lsphieuxuat = new dsphieuxuat();
     private static dschitietpx lschitietpx = new dschitietpx();
     private static DanhSachNV lsnhanvien = new DanhSachNV();
-    private static dsNhaCungCap lsnhacc = new dsNhaCungCap();
+    private static dsBaohanh lDsBaohanh = new dsBaohanh();
     private static dskhachhang lskh = new dskhachhang();
 
     private static account defaultMenu(Scanner sc, listaccount ls) {
@@ -56,6 +56,7 @@ public class Main {
             System.out.println("3. Lam viec voi san pham");
             System.out.println("4. Lam viec voi khach hang");
             System.out.println("5. Lam viec voi thong ke");
+            System.out.println("6. Lam viec voi bao hanh");
             System.out.println("x. De dang xuat");
             System.out.print("Thao tac ban muon thuc hien: ");
             choice = sc.nextLine();
@@ -67,13 +68,16 @@ public class Main {
                     lsnhanvien.mainMenu(sc, curruser);
                     break;
                 case "3":
-                    lssanpham.mainMenu(sc, curruser, lsphieuxuat, lschitietpx);
+                    lssanpham.mainMenu(sc, curruser, lsphieuxuat, lschitietpx, lDsBaohanh);
                     break;
                 case "4":
                     lskh.mainMenu(sc);
                     break;
                 case "5":
                     thongKeMenu(sc);
+                    break;
+                case "6":
+                    lDsBaohanh.menu(sc, lschitietpx, lsphieuxuat, lssanpham);
                     break;
                 case "x":
                     System.out.println("Da dang xuat");
@@ -94,6 +98,7 @@ public class Main {
         lsnhanvien.readFile();
         lsphieuxuat.readFile();
         lschitietpx.readFile(lssanpham);
+        lDsBaohanh.readFile();
         lskh.readFile();
         while (isrunning) {
             if (curruser == null) {

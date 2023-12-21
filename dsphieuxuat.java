@@ -176,11 +176,17 @@ public class dsphieuxuat {
     }
 
     public void hienthongtinsanpham(Scanner sc, Phieuxuat px, Chitietpx ctpx, DanhSachSanPham lSanPham) {
-        System.out.printf("%-46s%s\n", "", "Hoa Don");
         System.out.println("Nguoi mua: " + px.getIdkhachhang());
-        System.out.println("Nguoi ban: " + px.getIdnguoiban());
         System.out.println("Ngay mua hang: " + px.getNgayBan());
         System.out.println(ctpx.hienThongTinHoaDon(lSanPham));
+        System.out.println("Bam nut bat ky de thoat....");
+        sc.nextLine();
+    }
+
+    public void hienThongTinHoaDonBH(Scanner sc, Phieuxuat px, Chitietpx ctpx, DanhSachSanPham lSanPham) {
+        System.out.println("Nguoi mua: " + px.getIdkhachhang());
+        System.out.println("Ngay mua hang: " + px.getNgayBan());
+        System.out.println(ctpx.hienThongTinHoaDonBH(lSanPham));
         System.out.println("Bam nut bat ky de thoat....");
         sc.nextLine();
     }
@@ -189,8 +195,8 @@ public class dsphieuxuat {
         try {
             FileWriter fs = new FileWriter("hoadon.txt");
             fs.write(String.format("%-46s %s\n", " ", "Hoa Don"));
+            fs.write("Ma Hoa Don: " + px.getId() + '\n');
             fs.write("Nguoi mua: " + px.getIdkhachhang() + '\n');
-            fs.write("Nguoi ban: " + px.getIdnguoiban() + '\n');
             fs.write("Ngay mua hang: " + px.getNgayBan() + '\n');
             fs.write(ctpx.hienThongTinHoaDon(lSanPham));
             fs.close();
@@ -198,7 +204,12 @@ public class dsphieuxuat {
         }
     }
 
-    public void menupx(Scanner sc, DanhSachSanPham lSanPham, dschitietpx lschitietpx) {
+    public Phieuxuat timtheovt(int vt) {
+        Phieuxuat result = lspx[vt];
+        return result;
+    }
+
+    public void menupx(Scanner sc, DanhSachSanPham lSanPham, dschitietpx lschitietpx, dsBaohanh lDsBaohanh) {
         String option;
         Phieuxuat currPx = new Phieuxuat();
         Chitietpx currCTPX = new Chitietpx();
@@ -262,6 +273,10 @@ public class dsphieuxuat {
                     lschitietpx.writeToFile();
                     currCTPX.muaSanPham(lSanPham);
                     lSanPham.writeToFile();
+                    System.out.print("Nhap thoi gian bao hanh: ");
+                    int tgbh = checkPattern.checkInt(sc);
+                    lDsBaohanh.addBH(new Baohanh(currPx.getId(), tgbh));
+                    lDsBaohanh.writeToFile();
                     System.out.println("Don hang thanh cong bat dau in hoa don");
                     inHoaDon(currPx, currCTPX, lSanPham);
                     break;

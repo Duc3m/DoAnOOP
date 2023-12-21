@@ -79,6 +79,14 @@ public class dschitietpx {
         return sl;
     }
 
+    public int timTheoID(String id) {
+        for (int i = 0; i < lsctpx.length; i++) {
+            if (lsctpx[i].getId().equals(id))
+                return i;
+        }
+        return -1;
+    }
+
     public Chitietpx timtheovt(int vt) {
         Chitietpx result = lsctpx[vt];
         return result;

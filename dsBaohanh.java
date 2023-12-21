@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.concurrent.Flow.Subscriber;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -116,6 +117,56 @@ public class dsBaohanh {
             Baohanh.setcountId(Integer.parseInt(lsbaBaohanhs[lsbaBaohanhs.length - 1].getId().replace("bh", "")));
         } catch (Exception e) {
         }
+    }
+
+    public void ChiTietBH(Scanner sc, Baohanh bh, Phieuxuat px, Chitietpx ctpx, dsphieuxuat lDsphieuxuat,
+            DanhSachSanPham lDanhSachSanPham) {
+        System.out.println("Ma bao hanh: " + bh.getId());
+        System.out.println("Thoi han bao hanh: " + bh.getThoiGianBH());
+        lDsphieuxuat.hienThongTinHoaDonBH(sc, px, ctpx, lDanhSachSanPham);
+        ;
+    }
+
+    public void menu(Scanner sc, dschitietpx lDschitietpx, dsphieuxuat lDsphieuxuat, DanhSachSanPham lDanhSachSanPham) {
+        String option;
+        do {
+            System.out.println();
+            System.out.println("========== Menu Don Hang ==========");
+            System.out.println("1. Hien danh sach Bao Hanh hien tai");
+            System.out.println("2. Hien thong tin chi tiet bao hanh");
+            System.out.println("x. de thoat");
+            option = sc.nextLine();
+            switch (option) {
+                case "1":
+                    xuatBH();
+                    break;
+                case "2":
+                    System.out.print("nhap id bao hanh muon xem chi tiet: ");
+                    String id = sc.nextLine();
+                    int vt = searchId(id);
+                    if (vt == -1) {
+                        System.out.println("Khong tim thay id");
+                        break;
+                    }
+                    Baohanh bh = lsbaBaohanhs[vt];
+                    int vtpx = lDsphieuxuat.searchId(bh.getIdPhieuXuat());
+                    if (vtpx == -1) {
+                        System.out.println("khong tim thay thong tin");
+                        return;
+                    }
+                    Phieuxuat tempPx = lDsphieuxuat.timtheovt(vtpx);
+                    int vtctpx = lDschitietpx.timTheoID(tempPx.getChitietsanpham());
+                    if (vtctpx == -1) {
+                        System.out.println("khong tim thay thong tin");
+                        return;
+                    }
+                    Chitietpx ctpx = lDschitietpx.timtheovt(vtctpx);
+                    ChiTietBH(sc, bh, tempPx, ctpx, lDsphieuxuat, lDanhSachSanPham);
+                    break;
+                default:
+                    break;
+            }
+        } while (!option.equals("x"));
     }
 
 }

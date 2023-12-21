@@ -97,6 +97,29 @@ public class Chitietpx {
         return result;
     }
 
+    public String hienThongTinHoaDonBH(DanhSachSanPham lssanpham) {
+        String result = String.format("%-60s %-12s %-12s\n", "Ten san pham", "SL", "Gia (vnd)");
+        result += "-----------------------------------------------------------------------------------------\n";
+        long tongGia = 0;
+        int tongSL = 0;
+        for (int i = 0; i < danhsachsanpham.length; i++) {
+            int vt = lssanpham.timSanPhamTheoId(danhsachsanpham[i].idsanpham);
+            if (vt == -1)
+                continue;
+            Sanpham curr = lssanpham.getSanphamtheovt(vt);
+            String ten = curr.getTen();
+            int gia = curr.getGia();
+            tongGia += (long) gia * danhsachsanpham[i].soluong;
+            String currLine = String.format("%-60s %-12d %-,12d\n", ten, danhsachsanpham[i].soluong, gia);
+            result += currLine;
+            tongSL += danhsachsanpham[i].soluong;
+        }
+        result += "-----------------------------------------------------------------------------------------\n";
+        String summarize = String.format("%-60s %-12d %-,12d\n", "Total", tongSL, tongGia);
+        result += summarize;
+        return result;
+    }
+
     public int timSanPhamTheoId(String id) {
         for (int i = 0; i < danhsachsanpham.length; i++) {
             if (danhsachsanpham[i].idsanpham.equals(id))

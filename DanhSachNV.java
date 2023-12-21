@@ -275,7 +275,7 @@ public class DanhSachNV {
         char newGender = checkPattern.checkgt(sc);
 
         System.out.print("Nhap so gio tang ca (he so trach nhiem) cua nhan vien (quan ly): ");
-        double newSGTC = Double.parseDouble(sc.nextLine());
+        double newSGTC = checkPattern.checkDouble(sc);
 
         nhanvien newNV = new nvbanhang(newCccd, newName, newSDT, newGender, newBirthDay, newBirthMonth,
                 newBirthYear,

@@ -13,4 +13,10 @@ public interface permission {
     public boolean themSanPham();
 
     public boolean suaSanPham();
+
+    public boolean themNhanVien();
+
+    public boolean xoaNhanVien();
+
+    public boolean suaNhanvien();
 }
